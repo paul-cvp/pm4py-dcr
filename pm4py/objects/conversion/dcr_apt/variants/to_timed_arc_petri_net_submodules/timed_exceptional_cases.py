@@ -1,5 +1,5 @@
 from copy import deepcopy
-
+from collections import Counter
 import pandas as pd
 import numpy as np
 
@@ -1265,6 +1265,17 @@ class TimedExceptionalCases(object):
 
             needed_columns = master_df.loc[event][event_prime].columns
             needed_columns = set([c.split('_')[0] if '_' in c else c for c in needed_columns])
+            # needed_columns = list([c.split('_')[0] if '_' in c else c for c in needed_columns])
+            # col_counter = dict(Counter(needed_columns))
+            # if 'Re' in col_counter and col_counter['Re']<=1:
+            #     case = case.drop(index=[1])
+            #     case_others = case_others.drop(index=[1])
+            #     copy_pairwise_index.remove(1)
+            # if 'Rex' in col_counter and col_counter['Rex']<=1:
+            #     case = case.drop(index=[4])
+            #     case_others = case_others.drop(index=[4])
+            #     copy_pairwise_index.remove(4)
+            # needed_columns = set(needed_columns)
             if 'Re' not in needed_columns:
                 case = case.drop(index=[0, 1, 2])
                 case_others = case_others.drop(index=[0, 1])
@@ -1307,10 +1318,14 @@ class TimedExceptionalCases(object):
                 copy_to_all_index.remove(0)
                 copy_pairwise_index.remove(2)
             if 'In' not in needed_columns and 'Rex' not in needed_columns:
-                case = case.drop(index=[3,4,5])
-                case_others = case_others.drop(index=[3,5])
-                copy_to_all_index.remove(3)
-                copy_pairwise_index.remove(5)
+                case = case.drop(index=[2,3])
+                case_others = case_others.drop(index=[2,3])
+                copy_to_all_index.remove(2)
+                copy_pairwise_index.remove(3)
+                # case = case.drop(index=[3,4,5])
+                # case_others = case_others.drop(index=[3,5])
+                # copy_to_all_index.remove(3)
+                # copy_pairwise_index.remove(5)
 
             if 'Re' in needed_columns:
                 event_place = self.event_to_deadline_map[event_prime][event] if event in self.event_to_deadline_map[event_prime] else None

@@ -1,0 +1,1 @@
+A<> (((sum(i:id_t)Token(i).netFromDCR_train2_detected_gate_open_Ex)== 1) && ((X_netFromDCR_gate_down_Ex== 1) || ((X_netFromDCR_alarm_In== 1) && ((sum(i:id_t)Token(i).netFromDCR_alarm_Re_20)== 1)))) && Control.P_lock

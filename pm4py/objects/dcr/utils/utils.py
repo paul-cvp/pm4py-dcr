@@ -287,6 +287,8 @@ def nested_groups_and_sps_to_flat_dcr(graph: HierarchicalDcrGraph) -> DcrGraph:
         for k0 in ['timedconditions', 'timedresponses']:
             if nest in graph.__getattribute__(k0):
                 for ae in atomic_events:
+                    if ae not in graph.__getattribute__(k0):
+                        graph.__getattribute__(k0)[ae] = {}
                     graph.__getattribute__(k0)[ae] = {**graph.__getattribute__(k0)[ae], **graph.__getattribute__(k0)[nest]}
                 graph.__getattribute__(k0).pop(nest)
             for k, v in graph.__getattribute__(k0).items():

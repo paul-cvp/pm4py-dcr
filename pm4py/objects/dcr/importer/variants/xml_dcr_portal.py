@@ -103,6 +103,13 @@ def __parse_element__(curr_el, parent, dcr):
                         dcr['marking'][parent.tag].add(id)
                     case 'pendingResponses':
                         dcr['marking']['pending'].add(id)
+                        initial_deadline = curr_el.get('deadline')
+                        if initial_deadline:
+                            if initial_deadline.isdecimal():
+                                initial_deadline = int(initial_deadline)
+                            else:
+                                initial_deadline = isodate.parse_duration(initial_deadline)
+                            dcr['marking']['pendingDeadline'][id] = initial_deadline
                     case _:
                         pass
                 for role in curr_el.findall('.//role'):

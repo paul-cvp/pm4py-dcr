@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.6//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_6.dtd'>
+<nta>
+	<declaration>const int N = 4;
+typedef scalar[N] id_t;
+chan c0;
+urgent broadcast chan __fill_remove_from_trace__;
+chan netFromDCR_MakePayment_10;
+broadcast chan netFromDCR_AddOrder_7_test,netFromDCR_AddOrder_7_fire;
+broadcast chan netFromDCR_EditPaymentInfo_1_test,netFromDCR_EditPaymentInfo_1_fire;
+chan netFromDCR_MakePayment_11;
+chan netFromDCR_EditPaymentInfo_2;
+broadcast chan netFromDCR_EditPaymentInfo_0;
+broadcast chan netFromDCR_AddOrder_6_test,netFromDCR_AddOrder_6_fire;
+int[0,N] count0;
+int[0,N] count1;
+int[0,N] count2;
+int[0,N] count3;
+int[0,N] count4;
+int X_netFromDCR_MakePayment_Ex = 0; 
+int X_netFromDCR_AddOrder_In = 1; 
+int Max = 4; 
+int Active = 2; 
+bool lock = false;
+int CapacityOutTokens = 0;
+int CapacityInTokens = 4; 
+</declaration>
+	<template>
+		<name x="5" y="5">Token</name>
+		<parameter>const id_t id</parameter>
+		<declaration>clock x;</declaration>
+		<location id="id0" x="40" y="80">
+			<name x="30" y="50">netFromDCR_In_MakePayment_Re_5</name>
+			<label kind="invariant" x="30" y="95">x &lt;= 5</label>
+		</location>
+		<location id="id1" x="190" y="80">
+			<name x="180" y="50">netFromDCR_EditPaymentInfo_Ex</name>
+		</location>
+		<location id="id2" x="190" y="230">
+			<name x="180" y="200">netFromDCR_AddOrder_Ex</name>
+		</location>
+		<location id="id3" x="40" y="230">
+			<name x="30" y="200">netFromDCR_AddOrder_Re_1</name>
+			<label kind="invariant" x="30" y="245">x &lt;= 1</label>
+		</location>
+		<location id="id4" x="340" y="80">
+			<name x="330" y="50">_BOTTOMIN_</name>
+		</location>
+		<location id="id5" x="340" y="230">
+			<name x="330" y="200">_BOTTOMOUT_</name>
+			<label kind="invariant" x="330" y="245">CapacityOutTokens &lt;= 1</label>
+		</location>
+		<location id="id6" x="340" y="380">
+			<name x="330" y="350">netFromDCR_AddOrder_Re_1_netFromDCR_AddOrder_7_0</name>
+			<committed/>
+		</location>
+		<location id="id7" x="190" y="380">
+			<name x="180" y="350">_BOTTOMOUT__netFromDCR_AddOrder_7_1</name>
+			<committed/>
+		</location>
+		<location id="id8" x="40" y="380">
+			<name x="30" y="350">_BOTTOMOUT__netFromDCR_EditPaymentInfo_1_0</name>
+			<committed/>
+		</location>
+		<location id="id9" x="490" y="80">
+			<name x="480" y="50">netFromDCR_AddOrder_Ex_netFromDCR_AddOrder_6_0</name>
+			<committed/>
+		</location>
+		<location id="id10" x="490" y="230">
+			<name x="480" y="200">_BOTTOMOUT__netFromDCR_AddOrder_6_1</name>
+			<committed/>
+		</location>
+		<init ref="id4"/>
+		<transition id="id11">
+			<source ref="id0"/>
+			<target ref="id4"/>
+			<label kind="guard" x="130" y="50">(CapacityOutTokens == 1 || CapacityInTokens == 0) &amp;&amp; lock == 0 &amp;&amp; X_netFromDCR_AddOrder_In&lt;1 &amp;&amp; X_netFromDCR_MakePayment_Ex&lt;1 &amp;&amp; Active + 1 &lt;= Max</label>
+			<label kind="synchronisation" x="130" y="65">netFromDCR_MakePayment_10!</label>
+			<label kind="assignment" x="130" y="80">x := 0 , X_netFromDCR_AddOrder_In = X_netFromDCR_AddOrder_In + 1 , X_netFromDCR_MakePayment_Ex = X_netFromDCR_MakePayment_Ex + 1, CapacityInTokens = CapacityInTokens + 1 , Active = Active + 1</label>
+		</transition>
+		<transition id="id12">
+			<source ref="id1"/>
+			<target ref="id1"/>
+			<label kind="guard" x="130" y="50">x &gt;= 3</label>
+			<label kind="synchronisation" x="130" y="65">netFromDCR_MakePayment_10?</label>
+			<nail x="160" y="50"/>
+			<nail x="220" y="50"/>
+		</transition>
+		<transition id="id13">
+			<source ref="id3"/>
+			<target ref="id6"/>
+			<label kind="synchronisation" x="130" y="290">netFromDCR_AddOrder_7_test?</label>
+			<label kind="assignment" x="130" y="305">count0++</label>
+		</transition>
+		<transition id="id14">
+			<source ref="id6"/>
+			<target ref="id0"/>
+			<label kind="synchronisation" x="130" y="215">netFromDCR_AddOrder_7_fire?</label>
+			<label kind="assignment" x="130" y="230">x := 0</label>
+		</transition>
+		<transition id="id15">
+			<source ref="id6"/>
+			<target ref="id3"/>
+			<label kind="guard" x="130" y="275">count0&gt;1</label>
+			<label kind="assignment" x="130" y="305">count0--</label>
+		</transition>
+		<transition id="id16">
+			<source ref="id5"/>
+			<target ref="id7"/>
+			<label kind="synchronisation" x="205" y="290">netFromDCR_AddOrder_7_test?</label>
+			<label kind="assignment" x="205" y="305">count1++, CapacityOutTokens--</label>
+		</transition>
+		<transition id="id17">
+			<source ref="id7"/>
+			<target ref="id2"/>
+			<label kind="synchronisation" x="130" y="290">netFromDCR_AddOrder_7_fire?</label>
+			<label kind="assignment" x="130" y="305">x := 0</label>
+		</transition>
+		<transition id="id18">
+			<source ref="id7"/>
+			<target ref="id5"/>
+			<label kind="guard" x="205" y="275">count1&gt;1</label>
+			<label kind="assignment" x="205" y="305">count1--, CapacityOutTokens++</label>
+		</transition>
+		<transition id="id19">
+			<source ref="id2"/>
+			<target ref="id2"/>
+			<label kind="synchronisation" x="130" y="215">netFromDCR_AddOrder_7_test?</label>
+			<label kind="assignment" x="130" y="230">count2++</label>
+			<nail x="160" y="200"/>
+			<nail x="220" y="200"/>
+		</transition>
+		<transition id="id20">
+			<source ref="id0"/>
+			<target ref="id0"/>
+			<label kind="synchronisation" x="-20" y="65">netFromDCR_AddOrder_7_test?</label>
+			<label kind="assignment" x="-20" y="80">count3++</label>
+			<nail x="10" y="50"/>
+			<nail x="70" y="50"/>
+		</transition>
+		<transition id="id21">
+			<source ref="id5"/>
+			<target ref="id8"/>
+			<label kind="synchronisation" x="130" y="290">netFromDCR_EditPaymentInfo_1_test?</label>
+			<label kind="assignment" x="130" y="305">count0++, CapacityOutTokens--</label>
+		</transition>
+		<transition id="id22">
+			<source ref="id8"/>
+			<target ref="id1"/>
+			<label kind="synchronisation" x="55" y="215">netFromDCR_EditPaymentInfo_1_fire?</label>
+			<label kind="assignment" x="55" y="230">x := 0</label>
+		</transition>
+		<transition id="id23">
+			<source ref="id8"/>
+			<target ref="id5"/>
+			<label kind="guard" x="130" y="275">count0&gt;1</label>
+			<label kind="assignment" x="130" y="305">count0--, CapacityOutTokens++</label>
+		</transition>
+		<transition id="id24">
+			<source ref="id1"/>
+			<target ref="id1"/>
+			<label kind="synchronisation" x="130" y="65">netFromDCR_EditPaymentInfo_1_test?</label>
+			<label kind="assignment" x="130" y="80">count1++</label>
+			<nail x="160" y="50"/>
+			<nail x="220" y="50"/>
+		</transition>
+		<transition id="id25">
+			<source ref="id0"/>
+			<target ref="id4"/>
+			<label kind="guard" x="130" y="50">(CapacityOutTokens == 1 || CapacityInTokens == 0) &amp;&amp; lock == 0 &amp;&amp; X_netFromDCR_MakePayment_Ex&gt;=1 &amp;&amp; X_netFromDCR_AddOrder_In&lt;1</label>
+			<label kind="synchronisation" x="130" y="65">netFromDCR_MakePayment_11!</label>
+			<label kind="assignment" x="130" y="80">x := 0, X_netFromDCR_MakePayment_Ex = X_netFromDCR_MakePayment_Ex - 1 , X_netFromDCR_AddOrder_In = X_netFromDCR_AddOrder_In + 1 , X_netFromDCR_MakePayment_Ex = X_netFromDCR_MakePayment_Ex + 1, CapacityInTokens = CapacityInTokens + 1 , Active = Active + 0</label>
+		</transition>
+		<transition id="id26">
+			<source ref="id1"/>
+			<target ref="id1"/>
+			<label kind="guard" x="130" y="50">x &gt;= 3</label>
+			<label kind="synchronisation" x="130" y="65">netFromDCR_MakePayment_11?</label>
+			<nail x="160" y="50"/>
+			<nail x="220" y="50"/>
+		</transition>
+		<transition id="id27">
+			<source ref="id1"/>
+			<target ref="id1"/>
+			<label kind="guard" x="130" y="50">(CapacityOutTokens == 1 || CapacityInTokens == 0) &amp;&amp; lock == 0 &amp;&amp; X_netFromDCR_AddOrder_In&gt;=1</label>
+			<label kind="synchronisation" x="130" y="65">netFromDCR_EditPaymentInfo_2!</label>
+			<label kind="assignment" x="130" y="80">x := 0, X_netFromDCR_AddOrder_In = X_netFromDCR_AddOrder_In - 1 , X_netFromDCR_AddOrder_In = X_netFromDCR_AddOrder_In + 1 , Active = Active + 0</label>
+			<nail x="160" y="50"/>
+			<nail x="220" y="50"/>
+		</transition>
+		<transition id="id28">
+			<source ref="id2"/>
+			<target ref="id2"/>
+			<label kind="synchronisation" x="130" y="215">netFromDCR_EditPaymentInfo_2?</label>
+			<nail x="160" y="200"/>
+			<nail x="220" y="200"/>
+		</transition>
+		<transition id="id29">
+			<source ref="id1"/>
+			<target ref="id1"/>
+			<label kind="guard" x="130" y="50">(CapacityOutTokens == 1 || CapacityInTokens == 0) &amp;&amp; lock == 0 &amp;&amp; X_netFromDCR_AddOrder_In&lt;1</label>
+			<label kind="synchronisation" x="130" y="65">netFromDCR_EditPaymentInfo_0!</label>
+			<label kind="assignment" x="130" y="80">x := 0 , Active = Active + 0</label>
+			<nail x="160" y="50"/>
+			<nail x="220" y="50"/>
+		</transition>
+		<transition id="id30">
+			<source ref="id2"/>
+			<target ref="id9"/>
+			<label kind="synchronisation" x="280" y="140">netFromDCR_AddOrder_6_test?</label>
+			<label kind="assignment" x="280" y="155">count0++</label>
+		</transition>
+		<transition id="id31">
+			<source ref="id9"/>
+			<target ref="id2"/>
+			<label kind="synchronisation" x="280" y="140">netFromDCR_AddOrder_6_fire?</label>
+			<label kind="assignment" x="280" y="155">x := 0</label>
+		</transition>
+		<transition id="id32">
+			<source ref="id9"/>
+			<target ref="id2"/>
+			<label kind="guard" x="280" y="125">count0&gt;1</label>
+			<label kind="assignment" x="280" y="155">count0--</label>
+		</transition>
+		<transition id="id33">
+			<source ref="id5"/>
+			<target ref="id10"/>
+			<label kind="synchronisation" x="355" y="215">netFromDCR_AddOrder_6_test?</label>
+			<label kind="assignment" x="355" y="230">count1++, CapacityOutTokens--</label>
+		</transition>
+		<transition id="id34">
+			<source ref="id10"/>
+			<target ref="id0"/>
+			<label kind="synchronisation" x="205" y="140">netFromDCR_AddOrder_6_fire?</label>
+			<label kind="assignment" x="205" y="155">x := 0</label>
+		</transition>
+		<transition id="id35">
+			<source ref="id10"/>
+			<target ref="id5"/>
+			<label kind="guard" x="355" y="200">count1&gt;1</label>
+			<label kind="assignment" x="355" y="230">count1--, CapacityOutTokens++</label>
+		</transition>
+		<transition id="id36">
+			<source ref="id3"/>
+			<target ref="id3"/>
+			<label kind="synchronisation" x="-20" y="215">netFromDCR_AddOrder_6_test?</label>
+			<label kind="assignment" x="-20" y="230">count2++</label>
+			<nail x="10" y="200"/>
+			<nail x="70" y="200"/>
+		</transition>
+		<transition id="id37">
+			<source ref="id0"/>
+			<target ref="id0"/>
+			<label kind="synchronisation" x="-20" y="65">netFromDCR_AddOrder_6_test?</label>
+			<label kind="assignment" x="-20" y="80">count3++</label>
+			<nail x="10" y="50"/>
+			<nail x="70" y="50"/>
+		</transition>
+		<transition id="id38">
+			<source ref="id4"/>
+			<target ref="id5"/>
+			<label kind="guard" x="280" y="125">CapacityOutTokens &lt; 1</label>
+			<label kind="synchronisation" x="280" y="140">__fill_remove_from_trace__!</label>
+			<label kind="assignment" x="280" y="155">CapacityOutTokens++, CapacityInTokens--</label>
+		</transition>
+		<transition id="id39">
+			<source ref="id4"/>
+			<target ref="id3"/>
+			<label kind="synchronisation" x="130" y="140">c0?</label>
+			<label kind="assignment" x="130" y="155">CapacityInTokens--</label>
+		</transition>
+	</template>
+	<template>
+		<name x="5" y="5">Control</name>
+		<location id="id40" x="40" y="80">
+			<name x="30" y="50">P_lock</name>
+		</location>
+		<location id="id41" x="190" y="80">
+			<committed/>
+		</location>
+		<location id="id42" x="190" y="230">
+			<label kind="invariant" x="180" y="245">count0&gt;=1 &amp;&amp; count1&gt;=1 &amp;&amp; count2&lt;1 &amp;&amp; count3&lt;1</label>
+			<committed/>
+		</location>
+		<location id="id43" x="40" y="230">
+			<label kind="invariant" x="30" y="245">count0&gt;=1 &amp;&amp; count1&lt;1</label>
+			<committed/>
+		</location>
+		<location id="id44" x="340" y="80">
+			<label kind="invariant" x="330" y="95">count0&gt;=1 &amp;&amp; count1&gt;=1 &amp;&amp; count2&lt;1 &amp;&amp; count3&lt;1</label>
+			<committed/>
+		</location>
+		<init ref="id41"/>
+		<transition id="id45">
+			<source ref="id41"/>
+			<target ref="id40"/>
+			<label kind="synchronisation" x="55" y="65">c0!</label>
+		</transition>
+		<transition id="id46">
+			<source ref="id40"/>
+			<target ref="id42"/>
+			<label kind="guard" x="55" y="125">(CapacityOutTokens == 1 || CapacityInTokens == 0) &amp;&amp; X_netFromDCR_AddOrder_In &gt;= 1</label>
+			<label kind="synchronisation" x="55" y="140">netFromDCR_AddOrder_7_test!</label>
+			<label kind="assignment" x="55" y="155">lock = true</label>
+		</transition>
+		<transition id="id47">
+			<source ref="id42"/>
+			<target ref="id40"/>
+			<label kind="guard" x="55" y="125">count0==1 &amp;&amp; count1==1 &amp;&amp; count2&lt;1 &amp;&amp; count3&lt;1</label>
+			<label kind="synchronisation" x="55" y="140">netFromDCR_AddOrder_7_fire!</label>
+			<label kind="assignment" x="55" y="155">count0:=0, X_netFromDCR_AddOrder_In = X_netFromDCR_AddOrder_In - 1, count1:=0, count2:=0, count3:=0, lock = false , Active = Active + 0</label>
+		</transition>
+		<transition id="id48">
+			<source ref="id40"/>
+			<target ref="id43"/>
+			<label kind="guard" x="-20" y="125">(CapacityOutTokens == 1 || CapacityInTokens == 0) &amp;&amp; X_netFromDCR_AddOrder_In &lt; 1 &amp;&amp; Active + 1 &lt;= Max</label>
+			<label kind="synchronisation" x="-20" y="140">netFromDCR_EditPaymentInfo_1_test!</label>
+			<label kind="assignment" x="-20" y="155">lock = true</label>
+		</transition>
+		<transition id="id49">
+			<source ref="id43"/>
+			<target ref="id40"/>
+			<label kind="guard" x="-20" y="125">count0==1 &amp;&amp; count1&lt;1</label>
+			<label kind="synchronisation" x="-20" y="140">netFromDCR_EditPaymentInfo_1_fire!</label>
+			<label kind="assignment" x="-20" y="155">count0:=0, count1:=0, lock = false , Active = Active + 1</label>
+		</transition>
+		<transition id="id50">
+			<source ref="id40"/>
+			<target ref="id44"/>
+			<label kind="guard" x="130" y="50">(CapacityOutTokens == 1 || CapacityInTokens == 0) &amp;&amp; X_netFromDCR_AddOrder_In &gt;= 1</label>
+			<label kind="synchronisation" x="130" y="65">netFromDCR_AddOrder_6_test!</label>
+			<label kind="assignment" x="130" y="80">lock = true</label>
+		</transition>
+		<transition id="id51">
+			<source ref="id44"/>
+			<target ref="id40"/>
+			<label kind="guard" x="130" y="50">count0==1 &amp;&amp; count1==1 &amp;&amp; count2&lt;1 &amp;&amp; count3&lt;1</label>
+			<label kind="synchronisation" x="130" y="65">netFromDCR_AddOrder_6_fire!</label>
+			<label kind="assignment" x="130" y="80">count0:=0, X_netFromDCR_AddOrder_In = X_netFromDCR_AddOrder_In - 1, count1:=0, count2:=0, count3:=0, lock = false , Active = Active + 0</label>
+		</transition>
+	</template>
+	<system>system Control,Token;</system>
+	<queries>
+		<query>
+			<formula>((sum(i:id_t)Token(i).netFromDCR_In_MakePayment_Re_5)== 1) --&gt; ((X_netFromDCR_MakePayment_Ex== 1) || ((sum(i:id_t)Token(i).netFromDCR_In_MakePayment_Re_5)== 0)) &amp;&amp; Control.P_lock</formula>
+			<comment/>
+			<result outcome="failure" type="quality" timestamp="2024-10-11 17:03:39 +0200">
+			</result>
+		</query>
+	</queries>
+</nta>

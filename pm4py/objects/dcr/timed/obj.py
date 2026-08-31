@@ -107,6 +107,8 @@ class TimedDcrGraph(HierarchicalDcrGraph):
         res = super().obj_to_template()
         res['conditionsForDelays'] = self.__timedconditions
         res['responseToDeadlines'] = self.__timedresponses
+        res['marking']['executedTime'] = self.__marking.executed_time
+        res['marking']['pendingDeadline'] = self.__marking.pending_deadline
         return res
 
     @property

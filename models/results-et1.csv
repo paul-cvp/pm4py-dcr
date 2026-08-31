@@ -1,0 +1,11 @@
+Model;Query;Result;Verification Time;Memory Usage;Discovered States;Explored States;Stored States;Query Property;Extra Tokens;Verification Method;Symmetry;Search Order;Approximation Method;Approximation Constant
+milestone-deadlock-fixed.tapn;AG !(deadlock);Satisfied;0.001 s;N/A;2;2;2;AG !(deadlock);1;E: TAPAAL Discrete Engine Engine w. PTries;Yes;Breadth First Search;None;2
+milestone-deadlock-fixed.tapn;EF netFromDCR.MakePayment_Ex = 1;Not Satisfied;0.001 s;N/A;2;2;2;EF netFromDCR.MakePayment_Ex = 1;1;E: TAPAAL Discrete Engine Engine w. PTries;Yes;Breadth First Search;None;2
+milestone-deadlock-fixed.tapn;AF netFromDCR.MakePayment_Ex = 1;Satisfied;0.003 s;N/A;2;2;2;AF netFromDCR.MakePayment_Ex = 1;1;E: TAPAAL Discrete Engine Engine w. PTries;Yes;Depth First Search;None;2
+milestone-deadlock.tapn;AG !(deadlock);Not Satisfied;0.002 s;N/A;2;1;2;AG !(deadlock);1;E: TAPAAL Discrete Engine Engine w. PTries;Yes;Breadth First Search;None;2
+original-livelock.tapn;AG !(deadlock);Satisfied;0.001 s;N/A;27;16;16;AG !(deadlock);1;E: TAPAAL Discrete Engine Engine w. PTries;Yes;Breadth First Search;None;2
+original-livelock.tapn;EF netFromDCR.MakePayment_Ex = 1;Not Satisfied;0.001 s;N/A;27;16;16;EF netFromDCR.MakePayment_Ex = 1;1;E: TAPAAL Discrete Engine Engine w. PTries;Yes;Breadth First Search;None;2
+original-livelock.tapn;AF netFromDCR.MakePayment_Ex = 1;Not Satisfied;0.001 s;N/A;12;6;10;AF netFromDCR.MakePayment_Ex = 1;1;E: TAPAAL Discrete Engine Engine w. PTries;Yes;Depth First Search;None;2
+original.tapn;AG !(deadlock);Satisfied;0.001 s;N/A;50;28;28;AG !(deadlock);1;E: TAPAAL Discrete Engine Engine w. PTries;Yes;Breadth First Search;None;2
+original.tapn;EF netFromDCR.MakePayment_Ex = 1;Not Satisfied;0.0 s;N/A;50;28;28;EF netFromDCR.MakePayment_Ex = 1;1;E: TAPAAL Discrete Engine Engine w. PTries;Yes;Random Depth First Search;None;2
+original.tapn;AF netFromDCR.MakePayment_Ex = 1;Not Satisfied;0.001 s;N/A;16;8;14;AF netFromDCR.MakePayment_Ex = 1;1;E: TAPAAL Discrete Engine Engine w. PTries;Yes;Depth First Search;None;2

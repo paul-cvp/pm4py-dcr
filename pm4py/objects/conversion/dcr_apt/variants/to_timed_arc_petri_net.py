@@ -1,3 +1,5 @@
+from datetime import timedelta
+
 import numpy as np
 import pandas as pd
 from copy import deepcopy
@@ -38,14 +40,24 @@ class Dcr2TimedArcPetri(object):
     def initialize_helper_struct(self, G) -> None:
         # determine all deadlines
         def do_work(v, event, all_unique_deadlines):
-            if v > 0:
-                if v not in all_unique_deadlines:
-                    all_unique_deadlines[v] = set()
-                all_unique_deadlines[v].add(event)
-            elif v == 0:
-                if np.inf not in all_unique_deadlines:
-                    all_unique_deadlines[np.inf] = set()
-                all_unique_deadlines[np.inf].add(event)
+            if isinstance(v,int):
+                if v > 0:
+                    if v not in all_unique_deadlines:
+                        all_unique_deadlines[v] = set()
+                    all_unique_deadlines[v].add(event)
+                elif v == 0:
+                    if np.inf not in all_unique_deadlines:
+                        all_unique_deadlines[np.inf] = set()
+                    all_unique_deadlines[np.inf].add(event)
+            else:
+                if v > timedelta(0):
+                    if v not in all_unique_deadlines:
+                        all_unique_deadlines[v] = set()
+                    all_unique_deadlines[v].add(event)
+                elif v == timedelta(0):
+                    if np.inf not in all_unique_deadlines:
+                        all_unique_deadlines[np.inf] = set()
+                    all_unique_deadlines[np.inf].add(event)
 
         # for each event we have a list of all unique deadlines (can be infinity)
         # + all events that determine each unique deadline
@@ -79,7 +91,6 @@ class Dcr2TimedArcPetri(object):
         #     elif event in G['responseTo']:
         #         for event_prime in G['responseTo'][event]:
         #             do_work(0, event, self.unique_deadline[event_prime])
-
         for event in G['conditionsForDelays']:
             for event_prime in G['conditionsForDelays'][event]:
                 delay = G['conditionsForDelays'][event][event_prime]
@@ -105,6 +116,9 @@ class Dcr2TimedArcPetri(object):
         default_make_pend = event in self.preoptimizer.need_pending_place if self.preoptimize else True
         default_make_pend_ex = event in self.preoptimizer.need_pending_excluded_place if self.preoptimize else True
         default_make_exec = event in self.preoptimizer.need_executed_place if self.preoptimize else True
+        # if event == 'gate_down':
+        if event == 'MakePayment' or event == 'AddOrder':
+            default_make_exec = True
         event_columns = []
         re_columns = {}
         rex_columns = {}
@@ -176,22 +190,26 @@ class Dcr2TimedArcPetri(object):
         m = {}
         if event in G['marking']['included']:
             m['In'] = 1
-        if event in G['marking']['pending'] and event in G['marking']['included']:
-            m['Re'] = 1
-            if event in G['marking']['pendingDeadline']:
-                m['Deadline_Re'] = G['marking']['pendingDeadline'][event]
-        if event in G['marking']['pending'] and not event in G['marking']['included']:
-            m['Rex'] = 1
+        if event in G['marking']['pending']:
+            if event in G['marking']['included']:
+                m['Re'] = 1
+            else:
+                m['Rex'] = 1
+        if event in G['marking']['pendingDeadline']:
+            m['Deadline_Re'] = G['marking']['pendingDeadline'][event]
+            if event in G['marking']['included']:
+                m['Re'] = 1
+            else:
+                m['Rex'] = 1
         if event in G['marking']['executed']:
             m['Ex'] = 1
 
         return res_base_case, m
 
     def post_optimize_petri_net_reachability_graph(self, tapn, m, G=None) -> TimedArcNet:
-        from pm4py.objects.petri_net.utils import petri_utils
+        # from pm4py.objects.petri_net.utils import petri_utils
         from pm4py.objects.conversion.dcr.variants import reachability_analysis
-        # from pm4py.visualization.transition_system import visualizer as ts_visualizer
-        from pm4py.objects.petri_net.timed_arc_net import semantics as tapn_semantics
+        # from pm4py.objects.petri_net.timed_arc_net import semantics as tapn_semantics
         from pm4py.objects.petri_net.inhibitor_reset import semantics as inhibitor_semantics
 
         max_elab_time = 2 * 60 # 2 minutes
@@ -202,6 +220,10 @@ class Dcr2TimedArcPetri(object):
                                                                         'petri_semantics': inhibitor_semantics.InhibitorResetSemantics(),
                                                                         # 'petri_semantics': tapn_semantics.TimedArcSemantics(),
                                                                         'max_elab_time': max_elab_time})
+        if self.debug:
+            from pm4py.visualization.transition_system import visualizer as ts_visualizer
+            gviz = ts_visualizer.apply(trans_sys, parameters={ts_visualizer.Variants.VIEW_BASED.value.Parameters.FORMAT: "png"})
+            ts_visualizer.view(gviz)
 
         fired_transitions = set()
 
@@ -212,6 +234,7 @@ class Dcr2TimedArcPetri(object):
         for t in tapn.transitions:
             if t.name not in fired_transitions:
                 ts_to_remove.add(t)
+
         for t in ts_to_remove:
             tapn = pn_utils.remove_transition(tapn, t)
 
@@ -367,22 +390,36 @@ class Dcr2TimedArcPetri(object):
     def arc_pattern_table_to_petri(self, master_df, marking):
         res_pn = TimedArcNet("TapnfromDcr")
         res_m = TimedMarking()
-        for event, place_type in master_df.columns:
-            if place_type != 'No':
-                p = PetriNet.Place(name=f'{event}_{place_type}')
-                self.p_dict[(event, place_type)] = p
-                res_pn.places.add(p)
 
-                pt = place_type
-                if place_type.startswith('Re_'):
-                    pt, deadline = place_type.split('_')
-                    if deadline.isdigit() and int(deadline) > 0:
-                        p.properties['ageinvariant'] = int(deadline)
-                        if 'Deadline_Re' in marking[event] and marking[event]['Deadline_Re']==int(deadline):
-                            res_m.timed_dict[p] = marking[event]['Deadline_Re']
+        p_dict = {}
+        for event, place_type in master_df.columns:
+            if event not in p_dict:
+                p_dict[event] = set()
+            p_dict[event].add(place_type)
+        for event, place_types in p_dict.items():
+            init_pending_inf = True
+            if 'Re_inf' in place_types and 'Deadline_Re' in marking[event]:
+                if int(marking[event]['Deadline_Re'])>0:
+                    init_pending_inf = False
+
+            for place_type in place_types:
+                if place_type != 'No':
+                    p = PetriNet.Place(name=f'{event}_{place_type}')
+                    self.p_dict[(event, place_type)] = p
+                    res_pn.places.add(p)
+                    pt = place_type
+                    if place_type.startswith('Re_'):
+                        pt, deadline = place_type.split('_')
+                        if deadline.isdigit() and int(deadline) > 0:
+                            p.properties['ageinvariant'] = int(deadline)
+                            if 'Deadline_Re' in marking[event] and marking[event]['Deadline_Re']==int(deadline):
+                                res_m.timed_dict[p] = marking[event]['Deadline_Re']
+                                res_m[p] = marking[event][pt]
+                        elif deadline == 'inf' and pt in marking[event] and init_pending_inf:
                             res_m[p] = marking[event][pt]
-                elif pt in marking[event]:
-                    res_m[p] = marking[event][pt]
+
+                    elif pt in marking[event]:
+                        res_m[p] = marking[event][pt]
         transport_idx = 0
         increase = False
         for event, idx in master_df.index:
@@ -435,52 +472,14 @@ class Dcr2TimedArcPetri(object):
 
         return res_pn, res_m
 
-# def apply(dcr, parameters):
-#     d2p = Dcr2TimedArcPetri(**parameters)
-#     G = deepcopy(dcr)
-#     tapn, m = d2p.apply(G, **parameters)
-#     return tapn, m
-
-# def run_specific_dcr():
-#     '''
-#     here you can write your own graph and run it
-#     '''
-#     dcr = {
-#         'events': {'B'},
-#         'conditionsFor': {},
-#         'milestonesFor': {},
-#         'responseTo': {},
-#         'noResponseTo': {},
-#         'includesTo': {},
-#         'excludesTo': {},
-#         'conditionsForDelays': {},
-#         'responseToDeadlines': {},
-#         'marking': {'executed': set(),
-#                     'included': {'B'},
-#                     'pending': {'B'},
-#                     'pendingDeadline': {'B': 10}
-#                     }
-#     }
-#
-#     d2p = Dcr2TimedArcPetri(preoptimize=True, postoptimize=True, map_unexecutable_events=False)
-#     print('[i] dcr')
-#     tapn, m = d2p.dcr2tapn(dcr, tapn_path="/home/vco/Projects/pm4py-dcr/models/one_petri_timed.tapn")
-#
-#
-# if __name__ == "__main__":
-#     import os
-#
-#     print(os.getcwd())
-#     os.chdir('/home/vco/Projects/pm4py-dcr/')
-#     print(os.getcwd())
-#     from pm4py.objects.dcr.importer import importer as dcr_importer
-#     from pm4py.objects.conversion.dcr import converter as dcr_to_tapn
-#     from pm4py.objects.dcr.utils.utils import nested_groups_and_sps_to_flat_dcr
-#
-#     example = 'models/rail_example.xml'
-#     # example = 'models/test.xml'
-#     dcr_dict = dcr_importer.apply(example, parameters={'as_dcr_object': True, 'labels_as_ids': True})
-#     nested_groups_and_sps_to_flat_dcr(dcr_dict)
-#     dcr_dict = dcr_dict.obj_to_template()
-#     tapn, m = dcr_to_tapn.apply(dcr_dict, variant=dcr_to_tapn.Variants.TO_TIMED_ARC_PETRI_NET,
-#                                 parameters={'preoptimize': True, 'postoptimize': True, 'map_unexecutable_events': False, 'debug': True, 'tapn_path': 'models/rail_example.tapn'})
+if __name__ == "__main__":
+    import os
+    print(os.getcwd())
+    os.chdir('/home/vco/Projects/pm4py-dcr2tapn/')
+    print(os.getcwd())
+    from pm4py.objects.dcr.importer import importer as dcr_importer
+    example = 'models/dcr-original.xml'
+    dcr_dict = dcr_importer.apply(example, parameters={'as_dcr_object': True, 'labels_as_ids': True})
+    dcr_dict = dcr_dict.obj_to_template()
+    dcr2tapn = Dcr2TimedArcPetri(debug=False, preoptimize=True, postoptimize=True)
+    tapn, m, master_df = dcr2tapn.apply(dcr_dict, tapn_path='models/original.tapn')

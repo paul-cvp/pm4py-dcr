@@ -1,0 +1,11 @@
+Model;Query;Result;Verification Time;Memory Usage;Discovered States;Explored States;Stored States;Query Property;Extra Tokens;Verification Method;Symmetry;Search Order;Approximation Method;Approximation Constant
+milestone-deadlock-fixed.tapn;AG !(deadlock);Satisfied;0.001 s;N/A;2;2;2;AG !(deadlock);0;E: TAPAAL Discrete Engine Engine w. PTries;Yes;Breadth First Search;None;2
+milestone-deadlock-fixed.tapn;EF netFromDCR.MakePayment_Ex = 1;Satisfied;0.001 s;N/A;24;12;14;EF netFromDCR.MakePayment_Ex = 1;2;E: TAPAAL Discrete Engine Engine w. PTries;Yes;Breadth First Search;None;2
+milestone-deadlock-fixed.tapn;AF netFromDCR.MakePayment_Ex = 1;Satisfied;0.001 s;N/A;2;2;2;AF netFromDCR.MakePayment_Ex = 1;0;E: TAPAAL Discrete Engine Engine w. PTries;Yes;Depth First Search;None;2
+milestone-deadlock.tapn;AG !(deadlock);Not Satisfied;0.001 s;N/A;2;1;2;AG !(deadlock);0;E: TAPAAL Discrete Engine Engine w. PTries;Yes;Breadth First Search;None;2
+original-livelock.tapn;AG !(deadlock);Satisfied;0.001 s;N/A;7;6;6;AG !(deadlock);0;E: TAPAAL Discrete Engine Engine w. PTries;Yes;Breadth First Search;None;2
+original-livelock.tapn;EF netFromDCR.MakePayment_Ex = 1;Not Satisfied;0.001 s;N/A;27;16;16;EF netFromDCR.MakePayment_Ex = 1;2;E: TAPAAL Discrete Engine Engine w. PTries;Yes;Breadth First Search;None;2
+original-livelock.tapn;AF netFromDCR.MakePayment_Ex = 1;Satisfied;0.001 s;N/A;7;6;6;AF netFromDCR.MakePayment_Ex = 1;0;E: TAPAAL Discrete Engine Engine w. PTries;Yes;Depth First Search;None;2
+original.tapn;AG !(deadlock);Satisfied;0.0 s;N/A;9;8;8;AG !(deadlock);0;E: TAPAAL Discrete Engine Engine w. PTries;Yes;Breadth First Search;None;2
+original.tapn;EF netFromDCR.MakePayment_Ex = 1;Satisfied;0.001 s;N/A;15;8;13;EF netFromDCR.MakePayment_Ex = 1;2;E: TAPAAL Discrete Engine Engine w. PTries;Yes;Random Depth First Search;None;2
+original.tapn;AF netFromDCR.MakePayment_Ex = 1;Satisfied;0.0 s;N/A;9;8;8;AF netFromDCR.MakePayment_Ex = 1;0;E: TAPAAL Discrete Engine Engine w. PTries;Yes;Depth First Search;None;2

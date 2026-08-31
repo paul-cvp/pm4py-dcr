@@ -1,0 +1,143 @@
+<nta>
+<declaration>const int N = 1;
+urgent broadcast chan __fill_remove_from_trace__;
+broadcast chan TAPN1_T0;
+broadcast chan TAPN1_T1;
+int[0,N] count0;
+int X_TAPN1_P1 = 1; 
+int Max = 6; 
+int Active = 2; 
+bool lock = false;
+int CapacityOutTokens = 0;
+int CapacityInTokens = 5; 
+</declaration>
+<template>
+<name x="5" y="5">Token0</name>
+<declaration>clock x;</declaration>
+<location id="a43067" >
+<name>TAPN1_P0</name>
+<label kind="invariant">x &lt;= 1</label>
+</location>
+<location id="a43068" >
+<name>_BOTTOMIN_</name>
+</location>
+<init ref="a43067" />
+<transition>
+<source ref="a43067" />
+<target ref="a43068" />
+<label kind="guard">(CapacityOutTokens == 0 || CapacityInTokens == 0) &amp;&amp; lock == 0</label>
+<label kind="synchronisation">TAPN1_T0!</label>
+<label kind="assignment">x := 0, CapacityInTokens = CapacityInTokens + 1 , Active = Active + -1</label>
+</transition>
+</template>
+<template>
+<name x="5" y="5">Token1</name>
+<declaration>clock x;</declaration>
+<location id="a43069" >
+<name>TAPN1_P0</name>
+<label kind="invariant">x &lt;= 1</label>
+</location>
+<location id="a43070" >
+<name>_BOTTOMIN_</name>
+</location>
+<init ref="a43070" />
+<transition>
+<source ref="a43069" />
+<target ref="a43070" />
+<label kind="guard">(CapacityOutTokens == 0 || CapacityInTokens == 0) &amp;&amp; lock == 0</label>
+<label kind="synchronisation">TAPN1_T0!</label>
+<label kind="assignment">x := 0, CapacityInTokens = CapacityInTokens + 1 , Active = Active + -1</label>
+</transition>
+</template>
+<template>
+<name x="5" y="5">Token2</name>
+<declaration>clock x;</declaration>
+<location id="a43071" >
+<name>TAPN1_P0</name>
+<label kind="invariant">x &lt;= 1</label>
+</location>
+<location id="a43072" >
+<name>_BOTTOMIN_</name>
+</location>
+<init ref="a43072" />
+<transition>
+<source ref="a43071" />
+<target ref="a43072" />
+<label kind="guard">(CapacityOutTokens == 0 || CapacityInTokens == 0) &amp;&amp; lock == 0</label>
+<label kind="synchronisation">TAPN1_T0!</label>
+<label kind="assignment">x := 0, CapacityInTokens = CapacityInTokens + 1 , Active = Active + -1</label>
+</transition>
+</template>
+<template>
+<name x="5" y="5">Token3</name>
+<declaration>clock x;</declaration>
+<location id="a43073" >
+<name>TAPN1_P0</name>
+<label kind="invariant">x &lt;= 1</label>
+</location>
+<location id="a43074" >
+<name>_BOTTOMIN_</name>
+</location>
+<init ref="a43074" />
+<transition>
+<source ref="a43073" />
+<target ref="a43074" />
+<label kind="guard">(CapacityOutTokens == 0 || CapacityInTokens == 0) &amp;&amp; lock == 0</label>
+<label kind="synchronisation">TAPN1_T0!</label>
+<label kind="assignment">x := 0, CapacityInTokens = CapacityInTokens + 1 , Active = Active + -1</label>
+</transition>
+</template>
+<template>
+<name x="5" y="5">Token4</name>
+<declaration>clock x;</declaration>
+<location id="a43075" >
+<name>TAPN1_P0</name>
+<label kind="invariant">x &lt;= 1</label>
+</location>
+<location id="a43076" >
+<name>_BOTTOMIN_</name>
+</location>
+<init ref="a43076" />
+<transition>
+<source ref="a43075" />
+<target ref="a43076" />
+<label kind="guard">(CapacityOutTokens == 0 || CapacityInTokens == 0) &amp;&amp; lock == 0</label>
+<label kind="synchronisation">TAPN1_T0!</label>
+<label kind="assignment">x := 0, CapacityInTokens = CapacityInTokens + 1 , Active = Active + -1</label>
+</transition>
+</template>
+<template>
+<name x="5" y="5">Token5</name>
+<declaration>clock x;</declaration>
+<location id="a43077" >
+<name>TAPN1_P0</name>
+<label kind="invariant">x &lt;= 1</label>
+</location>
+<location id="a43078" >
+<name>_BOTTOMIN_</name>
+</location>
+<init ref="a43078" />
+<transition>
+<source ref="a43077" />
+<target ref="a43078" />
+<label kind="guard">(CapacityOutTokens == 0 || CapacityInTokens == 0) &amp;&amp; lock == 0</label>
+<label kind="synchronisation">TAPN1_T0!</label>
+<label kind="assignment">x := 0, CapacityInTokens = CapacityInTokens + 1 , Active = Active + -1</label>
+</transition>
+</template>
+<template>
+<name x="5" y="5">Control</name>
+<location id="a43079" >
+<name>P_lock</name>
+</location>
+<init ref="a43079" />
+<transition>
+<source ref="a43079" />
+<target ref="a43079" />
+<label kind="guard">(CapacityOutTokens == 0 || CapacityInTokens == 0) &amp;&amp; X_TAPN1_P1 &gt;= 1</label>
+<label kind="synchronisation">TAPN1_T1!</label>
+<label kind="assignment">X_TAPN1_P1 = X_TAPN1_P1 - 1, X_TAPN1_P1 = X_TAPN1_P1 + 1, lock = false , Active = Active + 0</label>
+</transition>
+</template>
+<system>system Control, Token0, Token1, Token2, Token3, Token4, Token5;</system>
+</nta>

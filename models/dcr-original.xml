@@ -1,7 +1,7 @@
 <dcrgraph title="dcr-original" dataTypesStatus="hide" filterLevel="-1" insightFilter="false" zoomLevel="1" formGroupStyle="Normal" formLayoutStyle="Horizontal" formShowPendingCount="true" graphBG="#f1f6fe" graphType="0" exercise="false" version="1.0">
     <meta>
-        <graph id="1824298" hash="16D12C4EC521ED732F2704E0978E9118" guid="28CD2751-DC0C-416B-A37E-92DACC0F6C7A" OwnerName="Vlad Paul Cosma" OwnerId="2275" categoryId="3862" categoryTitle="Default"/>
-        <revision id="4003210" type="minor" date="2024-08-19T14:38:22.240"/>
+        <graph id="1824298" hash="870C30C22E02F69821EFB124A03A0713" guid="28CD2751-DC0C-416B-A37E-92DACC0F6C7A" OwnerName="Vlad Paul Cosma" OwnerId="2275" categoryId="3862" categoryTitle="Default"/>
+        <revision id="4169566" type="minor" date="2024-10-12T16:22:25.870"/>
         <organization id="1" name="Community"/>
     </meta>
     <specification>
@@ -153,10 +153,11 @@
         </resources>
         <constraints>
             <conditions>
-                <condition sourceId="Activity0" targetId="Activity1" filterLevel="1" description="" time="5" groups=""/>
+                <condition sourceId="Activity0" targetId="Activity1" filterLevel="1" description="" time="3" groups=""/>
+                <condition sourceId="Activity0" targetId="Activity2" filterLevel="1" description="" time="" groups=""/>
             </conditions>
             <responses>
-                <response sourceId="Activity2" targetId="Activity1" filterLevel="1" description="" time="10" groups=""/>
+                <response sourceId="Activity2" targetId="Activity1" filterLevel="1" description="" time="5" groups=""/>
             </responses>
             <coresponses/>
             <excludes>

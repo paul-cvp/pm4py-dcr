@@ -1,7 +1,7 @@
 <dcrgraph title="dcr-milestone-deadlock" dataTypesStatus="hide" filterLevel="-1" insightFilter="false" zoomLevel="1" formGroupStyle="Normal" formLayoutStyle="Horizontal" formShowPendingCount="true" graphBG="#f1f6fe" graphType="0" exercise="false" version="1.0">
     <meta>
-        <graph id="1824282" hash="BC6104914F939C1C552C3E9DAED4E685" guid="8E02D1D0-0AC7-4B37-A865-7E08AF197909" OwnerName="Vlad Paul Cosma" OwnerId="2275" categoryId="3862" categoryTitle="Default"/>
-        <revision id="4002758" type="minor" date="2024-08-19T11:58:04.320"/>
+        <graph id="1824282" hash="9AA5FCFDA6824F0049031CA916512885" guid="8E02D1D0-0AC7-4B37-A865-7E08AF197909" OwnerName="Vlad Paul Cosma" OwnerId="2275" categoryId="3862" categoryTitle="Default"/>
+        <revision id="4169572" type="minor" date="2024-10-12T16:25:51.647"/>
         <organization id="1" name="Community"/>
     </meta>
     <specification>
@@ -153,7 +153,8 @@
         </resources>
         <constraints>
             <conditions>
-                <condition sourceId="Activity0" targetId="Activity1" filterLevel="1" description="" time="10" groups=""/>
+                <condition sourceId="Activity0" targetId="Activity1" filterLevel="1" description="" time="3" groups=""/>
+                <condition sourceId="Activity0" targetId="Activity2" filterLevel="1" description="" time="" groups=""/>
             </conditions>
             <responses>
                 <response sourceId="Activity2" targetId="Activity1" filterLevel="1" description="" time="5" groups=""/>

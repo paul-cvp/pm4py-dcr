@@ -1,0 +1,790 @@
+<dcrgraph title="dcr-railroad-controller2" dataTypesStatus="hide" filterLevel="-1" insightFilter="false" zoomLevel="0" formGroupStyle="Normal" formLayoutStyle="Horizontal" formShowPendingCount="true" graphBG="#f1f6fe" graphType="0" exercise="false" version="1.0">
+    <meta>
+        <graph id="1701035" hash="80D98356B7AD721D7115A5A51DCC98D1" guid="FAF59375-62C2-4DFA-8592-74295EB36E1D" OwnerName="Thomas Hildebrandt" OwnerId="248" categoryId="343" categoryTitle="Default" Keywords=""/>
+        <revision id="4166987" type="minor" date="2024-10-10T19:15:10.023"/>
+        <organization id="1" name="Community"/>
+    </meta>
+    <specification>
+        <resources>
+            <events>
+                <event id="Activity7">
+                    <precondition message=""/>
+                    <custom>
+                        <visualization>
+                            <location xLoc="150" yLoc="520"/>
+                            <colors bg="#f9f7ed" textStroke="#000000" stroke="#cccccc"/>
+                        </visualization>
+                        <roles>
+                            <role>controller</role>
+                        </roles>
+                        <readRoles>
+                            <readRole/>
+                        </readRoles>
+                        <groups>
+                            <group/>
+                        </groups>
+                        <phases>
+                            <phase/>
+                        </phases>
+                        <eventType/>
+                        <eventScope>private</eventScope>
+                        <eventTypeData/>
+                        <eventDescription/>
+                        <purpose/>
+                        <guide/>
+                        <insight use="false"/>
+                        <level>1</level>
+                        <sequence>11</sequence>
+                        <costs>0</costs>
+                        <eventData/>
+                        <interfaces/>
+                    </custom>
+                </event>
+                <event id="Activity2_1">
+                    <precondition message=""/>
+                    <custom>
+                        <visualization>
+                            <location xLoc="400" yLoc="570"/>
+                            <colors bg="#f9f7ed" textStroke="#000000" stroke="#cccccc"/>
+                        </visualization>
+                        <roles>
+                            <role>gate</role>
+                        </roles>
+                        <readRoles>
+                            <readRole/>
+                        </readRoles>
+                        <groups>
+                            <group/>
+                        </groups>
+                        <phases>
+                            <phase/>
+                        </phases>
+                        <eventType/>
+                        <eventScope>private</eventScope>
+                        <eventTypeData/>
+                        <eventDescription/>
+                        <purpose/>
+                        <guide/>
+                        <insight use="false"/>
+                        <level>1</level>
+                        <sequence>5</sequence>
+                        <costs>0</costs>
+                        <eventData/>
+                        <interfaces/>
+                    </custom>
+                </event>
+                <event id="Activity8" type="nesting">
+                    <precondition message=""/>
+                    <custom>
+                        <visualization>
+                            <location xLoc="600" yLoc="70"/>
+                            <colors bg="#f9f7ed" textStroke="#000000" stroke="#cccccc"/>
+                        </visualization>
+                        <roles>
+                            <role/>
+                        </roles>
+                        <readRoles>
+                            <readRole/>
+                        </readRoles>
+                        <groups>
+                            <group/>
+                        </groups>
+                        <phases>
+                            <phase/>
+                        </phases>
+                        <eventType/>
+                        <eventScope>private</eventScope>
+                        <eventTypeData/>
+                        <eventDescription/>
+                        <purpose/>
+                        <guide/>
+                        <insight use="false"/>
+                        <level>1</level>
+                        <sequence>12</sequence>
+                        <costs>0</costs>
+                        <eventData/>
+                        <interfaces/>
+                    </custom>
+                    <event id="Activity13_1">
+                        <precondition message=""/>
+                        <custom>
+                            <visualization>
+                                <location xLoc="630" yLoc="320"/>
+                                <colors bg="#f9f7ed" textStroke="#000000" stroke="#cccccc"/>
+                            </visualization>
+                            <roles>
+                                <role>controller</role>
+                            </roles>
+                            <readRoles>
+                                <readRole/>
+                            </readRoles>
+                            <groups>
+                                <group/>
+                            </groups>
+                            <phases>
+                                <phase/>
+                            </phases>
+                            <eventType/>
+                            <eventScope>private</eventScope>
+                            <eventTypeData/>
+                            <eventDescription/>
+                            <purpose/>
+                            <guide/>
+                            <insight use="false"/>
+                            <level>1</level>
+                            <sequence>19</sequence>
+                            <costs>0</costs>
+                            <eventData/>
+                            <interfaces/>
+                        </custom>
+                    </event>
+                    <event id="Activity14">
+                        <precondition message=""/>
+                        <custom>
+                            <visualization>
+                                <location xLoc="630" yLoc="120"/>
+                                <colors bg="#f9f7ed" textStroke="#000000" stroke="#cccccc"/>
+                            </visualization>
+                            <roles>
+                                <role>controller</role>
+                            </roles>
+                            <readRoles>
+                                <readRole/>
+                            </readRoles>
+                            <groups>
+                                <group/>
+                            </groups>
+                            <phases>
+                                <phase/>
+                            </phases>
+                            <eventType/>
+                            <eventScope>private</eventScope>
+                            <eventTypeData/>
+                            <eventDescription/>
+                            <purpose/>
+                            <guide/>
+                            <insight use="false"/>
+                            <level>1</level>
+                            <sequence>20</sequence>
+                            <costs>0</costs>
+                            <eventData/>
+                            <interfaces/>
+                        </custom>
+                    </event>
+                </event>
+                <event id="Activity12">
+                    <precondition message=""/>
+                    <custom>
+                        <visualization>
+                            <location xLoc="700" yLoc="570"/>
+                            <colors bg="#f9f7ed" textStroke="#000000" stroke="#cccccc"/>
+                        </visualization>
+                        <roles>
+                            <role>gate</role>
+                        </roles>
+                        <readRoles>
+                            <readRole/>
+                        </readRoles>
+                        <groups>
+                            <group/>
+                        </groups>
+                        <phases>
+                            <phase/>
+                        </phases>
+                        <eventType/>
+                        <eventScope>private</eventScope>
+                        <eventTypeData/>
+                        <eventDescription/>
+                        <purpose/>
+                        <guide/>
+                        <insight use="false"/>
+                        <level>1</level>
+                        <sequence>16</sequence>
+                        <costs>0</costs>
+                        <eventData/>
+                        <interfaces/>
+                    </custom>
+                </event>
+                <event id="Activity12_1" type="nesting">
+                    <precondition message=""/>
+                    <custom>
+                        <visualization>
+                            <location xLoc="350" yLoc="70"/>
+                            <colors bg="#f9f7ed" textStroke="#000000" stroke="#cccccc"/>
+                        </visualization>
+                        <roles>
+                            <role/>
+                        </roles>
+                        <readRoles>
+                            <readRole/>
+                        </readRoles>
+                        <groups>
+                            <group/>
+                        </groups>
+                        <phases>
+                            <phase/>
+                        </phases>
+                        <eventType/>
+                        <eventScope>private</eventScope>
+                        <eventTypeData/>
+                        <eventDescription/>
+                        <purpose/>
+                        <guide/>
+                        <insight use="false"/>
+                        <level>1</level>
+                        <sequence>24</sequence>
+                        <costs>0</costs>
+                        <eventData/>
+                        <interfaces/>
+                    </custom>
+                    <event id="Activity3">
+                        <precondition message=""/>
+                        <custom>
+                            <visualization>
+                                <location xLoc="380" yLoc="320"/>
+                                <colors bg="#f9f7ed" textStroke="#000000" stroke="#cccccc"/>
+                            </visualization>
+                            <roles>
+                                <role>controller</role>
+                            </roles>
+                            <readRoles>
+                                <readRole/>
+                            </readRoles>
+                            <groups>
+                                <group/>
+                            </groups>
+                            <phases>
+                                <phase/>
+                            </phases>
+                            <eventType/>
+                            <eventScope>private</eventScope>
+                            <eventTypeData/>
+                            <eventDescription/>
+                            <purpose/>
+                            <guide/>
+                            <insight use="false"/>
+                            <level>1</level>
+                            <sequence>7</sequence>
+                            <costs>0</costs>
+                            <eventData/>
+                            <interfaces/>
+                        </custom>
+                    </event>
+                    <event id="Activity13">
+                        <precondition message=""/>
+                        <custom>
+                            <visualization>
+                                <location xLoc="380" yLoc="120"/>
+                                <colors bg="#f9f7ed" textStroke="#000000" stroke="#cccccc"/>
+                            </visualization>
+                            <roles>
+                                <role>controller</role>
+                            </roles>
+                            <readRoles>
+                                <readRole/>
+                            </readRoles>
+                            <groups>
+                                <group/>
+                            </groups>
+                            <phases>
+                                <phase/>
+                            </phases>
+                            <eventType/>
+                            <eventScope>private</eventScope>
+                            <eventTypeData/>
+                            <eventDescription/>
+                            <purpose/>
+                            <guide/>
+                            <insight use="false"/>
+                            <level>1</level>
+                            <sequence>18</sequence>
+                            <costs>0</costs>
+                            <eventData/>
+                            <interfaces/>
+                        </custom>
+                    </event>
+                </event>
+                <event id="Activity13_2" type="nesting">
+                    <precondition message=""/>
+                    <custom>
+                        <visualization>
+                            <location xLoc="800" yLoc="70"/>
+                            <colors bg="#f9f7ed" textStroke="#000000" stroke="#cccccc"/>
+                        </visualization>
+                        <roles>
+                            <role/>
+                        </roles>
+                        <readRoles>
+                            <readRole/>
+                        </readRoles>
+                        <groups>
+                            <group/>
+                        </groups>
+                        <phases>
+                            <phase/>
+                        </phases>
+                        <eventType/>
+                        <eventScope>private</eventScope>
+                        <eventTypeData/>
+                        <eventDescription/>
+                        <purpose/>
+                        <guide/>
+                        <insight use="false"/>
+                        <level>1</level>
+                        <sequence>25</sequence>
+                        <costs>0</costs>
+                        <eventData/>
+                        <interfaces/>
+                    </custom>
+                    <event id="Activity10">
+                        <precondition message=""/>
+                        <custom>
+                            <visualization>
+                                <location xLoc="830" yLoc="320"/>
+                                <colors bg="#f9f7ed" textStroke="#000000" stroke="#cccccc"/>
+                            </visualization>
+                            <roles>
+                                <role>controller</role>
+                            </roles>
+                            <readRoles>
+                                <readRole/>
+                            </readRoles>
+                            <groups>
+                                <group/>
+                            </groups>
+                            <phases>
+                                <phase/>
+                            </phases>
+                            <eventType/>
+                            <eventScope>private</eventScope>
+                            <eventTypeData/>
+                            <eventDescription/>
+                            <purpose/>
+                            <guide/>
+                            <insight use="false"/>
+                            <level>1</level>
+                            <sequence>22</sequence>
+                            <costs>0</costs>
+                            <eventData/>
+                            <interfaces/>
+                        </custom>
+                    </event>
+                    <event id="Activity11">
+                        <precondition message=""/>
+                        <custom>
+                            <visualization>
+                                <location xLoc="830" yLoc="120"/>
+                                <colors bg="#f9f7ed" textStroke="#000000" stroke="#cccccc"/>
+                            </visualization>
+                            <roles>
+                                <role>controller</role>
+                            </roles>
+                            <readRoles>
+                                <readRole/>
+                            </readRoles>
+                            <groups>
+                                <group/>
+                            </groups>
+                            <phases>
+                                <phase/>
+                            </phases>
+                            <eventType/>
+                            <eventScope>private</eventScope>
+                            <eventTypeData/>
+                            <eventDescription/>
+                            <purpose/>
+                            <guide/>
+                            <insight use="false"/>
+                            <level>1</level>
+                            <sequence>23</sequence>
+                            <costs>0</costs>
+                            <eventData/>
+                            <interfaces/>
+                        </custom>
+                    </event>
+                </event>
+                <event id="Activity14_1" type="nesting">
+                    <precondition message=""/>
+                    <custom>
+                        <visualization>
+                            <location xLoc="100" yLoc="70"/>
+                            <colors bg="#f9f7ed" textStroke="#000000" stroke="#cccccc"/>
+                        </visualization>
+                        <roles>
+                            <role/>
+                        </roles>
+                        <readRoles>
+                            <readRole/>
+                        </readRoles>
+                        <groups>
+                            <group/>
+                        </groups>
+                        <phases>
+                            <phase/>
+                        </phases>
+                        <eventType/>
+                        <eventScope>private</eventScope>
+                        <eventTypeData/>
+                        <eventDescription/>
+                        <purpose/>
+                        <guide/>
+                        <insight use="false"/>
+                        <level>1</level>
+                        <sequence>26</sequence>
+                        <costs>0</costs>
+                        <eventData/>
+                        <interfaces/>
+                    </custom>
+                    <event id="Activity15">
+                        <precondition message=""/>
+                        <custom>
+                            <visualization>
+                                <location xLoc="130" yLoc="120"/>
+                                <colors bg="#f9f7ed" textStroke="#000000" stroke="#cccccc"/>
+                            </visualization>
+                            <roles>
+                                <role>second train</role>
+                            </roles>
+                            <readRoles>
+                                <readRole/>
+                            </readRoles>
+                            <groups>
+                                <group/>
+                            </groups>
+                            <phases>
+                                <phase/>
+                            </phases>
+                            <eventType/>
+                            <eventScope>private</eventScope>
+                            <eventTypeData/>
+                            <eventDescription/>
+                            <purpose/>
+                            <guide/>
+                            <insight use="false"/>
+                            <level>1</level>
+                            <sequence>21</sequence>
+                            <costs>0</costs>
+                            <eventData/>
+                            <interfaces/>
+                        </custom>
+                    </event>
+                    <event id="Activity5">
+                        <precondition message=""/>
+                        <custom>
+                            <visualization>
+                                <location xLoc="130" yLoc="320"/>
+                                <colors bg="#f9f7ed" textStroke="#000000" stroke="#cccccc"/>
+                            </visualization>
+                            <roles>
+                                <role>first train</role>
+                            </roles>
+                            <readRoles>
+                                <readRole/>
+                            </readRoles>
+                            <groups>
+                                <group/>
+                            </groups>
+                            <phases>
+                                <phase/>
+                            </phases>
+                            <eventType/>
+                            <eventScope>private</eventScope>
+                            <eventTypeData/>
+                            <eventDescription/>
+                            <purpose/>
+                            <guide/>
+                            <insight use="false"/>
+                            <level>1</level>
+                            <sequence>9</sequence>
+                            <costs>0</costs>
+                            <eventData/>
+                            <interfaces/>
+                        </custom>
+                    </event>
+                </event>
+            </events>
+            <subProcesses/>
+            <distribution/>
+            <labels>
+                <label id="alarm"/>
+                <label id="gate down"/>
+                <label id="leave signal"/>
+                <label id="train1 leave"/>
+                <label id="train2 leave"/>
+                <label id="gate open"/>
+                <label id="trains detected gate open"/>
+                <label id="train1 detected gate open"/>
+                <label id="train2 detected gate open"/>
+                <label id="train detected gate down"/>
+                <label id="train1 detected gate down"/>
+                <label id="train2 detected gate down"/>
+                <label id="train"/>
+                <label id="train2 break"/>
+                <label id="train1 break"/>
+            </labels>
+            <labelMappings>
+                <labelMapping eventId="Activity7" labelId="alarm"/>
+                <labelMapping eventId="Activity2_1" labelId="gate down"/>
+                <labelMapping eventId="Activity8" labelId="leave signal"/>
+                <labelMapping eventId="Activity13_1" labelId="train1 leave"/>
+                <labelMapping eventId="Activity14" labelId="train2 leave"/>
+                <labelMapping eventId="Activity12" labelId="gate open"/>
+                <labelMapping eventId="Activity12_1" labelId="trains detected gate open"/>
+                <labelMapping eventId="Activity3" labelId="train1 detected gate open"/>
+                <labelMapping eventId="Activity13" labelId="train2 detected gate open"/>
+                <labelMapping eventId="Activity13_2" labelId="train detected gate down"/>
+                <labelMapping eventId="Activity10" labelId="train1 detected gate down"/>
+                <labelMapping eventId="Activity11" labelId="train2 detected gate down"/>
+                <labelMapping eventId="Activity14_1" labelId="train"/>
+                <labelMapping eventId="Activity15" labelId="train2 break"/>
+                <labelMapping eventId="Activity5" labelId="train1 break"/>
+            </labelMappings>
+            <expressions/>
+            <variables/>
+            <variableAccesses>
+                <writeAccesses/>
+            </variableAccesses>
+            <custom>
+                <keywords/>
+                <roles>
+                    <role description="" specification="">controller</role>
+                    <role description="" specification="">first train</role>
+                    <role description="" specification="">gate</role>
+                    <role description="" specification="">second train</role>
+                </roles>
+                <groups/>
+                <phases/>
+                <eventTypes/>
+                <eventParameters/>
+                <graphDetails>A railroad crossing is controlled by a computer system. There are two railway tracks within the crossing, and two trains can approach the crossing simultaneously. The movement of trains is controlled by a set of semaphores that can be red or green. The road traffic is controlled by a gate that can be open or closed. A semaphore can be operated by a controller to display green light, when a train approaches, but not earlier than after the gate has been closed. Opening and closing states of the gate are confirmed to the controller by two input signals: up and down, respectively. The semaphore is red and the gate is up in the initial state of the crossing.
+A train cannot be stopped instantly. When a train is detected, a controller has 30 seconds to close the gate and display a green signal, which allows the train to continue its course. After these 30 seconds, it takes further 20 seconds to reach the crossing. Otherwise, if the green signal is not displayed within these 30 seconds, the train must break in order to stop safely before the crossing. Closing the gate must last less than 20 seconds, or else an alarm must sound. The gate can be opened when a leave signal has been sent after the last train has left the crossing.</graphDetails>
+                <graphDocumentation/>
+                <graphLanguage>en-US</graphLanguage>
+                <graphDomain>process</graphDomain>
+                <graphFilters>
+                    <filteredGroups/>
+                    <filteredRoles/>
+                    <filteredPhases/>
+                </graphFilters>
+                <hightlighterMarkup id="HLM"/>
+                <highlighterMarkup>
+                    <highlightLayers>
+                        <highlightLayer default="true" name="description">
+                            <![CDATA[A railroad crossing is controlled by a computer system. There are two railway tracks within the crossing, and two trains can approach the crossing simultaneously. The movement of trains is controlled by a set of semaphores that can be red or green. The road traffic is controlled by a gate that can be open or closed. A semaphore can be operated by a controller to display green light, when a train approaches, but not earlier than after the gate has been closed. Opening and closing states of the gate are confirmed to the controller by two input signals: up and down, respectively. The semaphore is red and the gate is up in the initial state of the crossing.
+A train cannot be stopped instantly. When a train is detected, a controller has 30 seconds to close the gate and display a green signal, which allows the train to continue its course. After these 30 seconds, it takes further 20 seconds to reach the crossing. Otherwise, if the green signal is not displayed within these 30 seconds, the train must break in order to stop safely before the crossing. Closing the gate must last less than 20 seconds, or else an alarm must sound. The gate can be opened when a leave signal has been sent after the last train has left the crossing.]]>
+                        </highlightLayer>
+                    </highlightLayers>
+                    <highlights>
+                        <highlight type="activity">
+                            <layers>
+                                <layer name="description">
+                                    <ranges>
+                                        <range start="564" end="568">down</range>
+                                    </ranges>
+                                </layer>
+                            </layers>
+                            <items>
+                                <item id="Activity2_1"/>
+                            </items>
+                        </highlight>
+                        <highlight type="activity">
+                            <layers>
+                                <layer name="description">
+                                    <ranges>
+                                        <range start="705" end="722">train is detected</range>
+                                    </ranges>
+                                </layer>
+                            </layers>
+                            <items>
+                                <item id="Activity3"/>
+                            </items>
+                        </highlight>
+                        <highlight type="activity">
+                            <layers>
+                                <layer name="description">
+                                    <ranges>
+                                        <range start="1008" end="1013">break</range>
+                                    </ranges>
+                                </layer>
+                            </layers>
+                            <items>
+                                <item id="Activity5"/>
+                            </items>
+                        </highlight>
+                        <highlight type="activity">
+                            <layers>
+                                <layer name="description">
+                                    <ranges>
+                                        <range start="1119" end="1124">alarm</range>
+                                    </ranges>
+                                </layer>
+                            </layers>
+                            <items>
+                                <item id="Activity7"/>
+                            </items>
+                        </highlight>
+                        <highlight type="activity">
+                            <layers>
+                                <layer name="description">
+                                    <ranges>
+                                        <range start="1167" end="1179">leave signal</range>
+                                    </ranges>
+                                </layer>
+                            </layers>
+                            <items>
+                                <item id="Activity8"/>
+                            </items>
+                        </highlight>
+                        <highlight type="role">
+                            <layers>
+                                <layer name="description">
+                                    <ranges>
+                                        <range start="114" end="119">train</range>
+                                        <range start="179" end="184">train</range>
+                                        <range start="393" end="398">train</range>
+                                        <range start="663" end="668">train</range>
+                                        <range start="705" end="710">train</range>
+                                        <range start="815" end="820">train</range>
+                                        <range start="997" end="1002">train</range>
+                                        <range start="1209" end="1214">train</range>
+                                    </ranges>
+                                </layer>
+                            </layers>
+                            <items>
+                                <item id="first train"/>
+                            </items>
+                        </highlight>
+                        <highlight type="role">
+                            <layers>
+                                <layer name="description">
+                                    <ranges>
+                                        <range start="285" end="289">gate</range>
+                                        <range start="442" end="446">gate</range>
+                                        <range start="498" end="502">gate</range>
+                                        <range start="613" end="617">gate</range>
+                                        <range start="765" end="769">gate</range>
+                                        <range start="1071" end="1075">gate</range>
+                                        <range start="1141" end="1145">gate</range>
+                                    </ranges>
+                                </layer>
+                            </layers>
+                            <items>
+                                <item id="gate"/>
+                            </items>
+                        </highlight>
+                        <highlight type="activity">
+                            <layers>
+                                <layer name="description">
+                                    <ranges>
+                                        <range start="302" end="306">open</range>
+                                    </ranges>
+                                </layer>
+                            </layers>
+                            <items>
+                                <item id="Activity12"/>
+                            </items>
+                        </highlight>
+                        <highlight type="role">
+                            <layers>
+                                <layer name="description">
+                                    <ranges>
+                                        <range start="351" end="361">controller</range>
+                                        <range start="524" end="534">controller</range>
+                                        <range start="726" end="736">controller</range>
+                                    </ranges>
+                                </layer>
+                            </layers>
+                            <items>
+                                <item id="controller"/>
+                            </items>
+                        </highlight>
+                    </highlights>
+                </highlighterMarkup>
+            </custom>
+        </resources>
+        <constraints>
+            <conditions>
+                <condition sourceId="Activity3" targetId="Activity5" filterLevel="1" description="" time="30" groups=""/>
+                <condition sourceId="Activity13_1" targetId="Activity12" filterLevel="1" description="" time="" groups=""/>
+                <condition sourceId="Activity13" targetId="Activity15" filterLevel="1" description="" time="30" groups=""/>
+                <condition sourceId="Activity3" targetId="Activity8" filterLevel="1" description="" time="50" groups=""/>
+                <condition sourceId="Activity3" targetId="Activity7" filterLevel="1" description="" time="20" groups=""/>
+            </conditions>
+            <responses>
+                <response sourceId="Activity3" targetId="Activity5" filterLevel="1" description="" time="30" groups=""/>
+                <response sourceId="Activity3" targetId="Activity13_1" filterLevel="1" description="" time="" groups=""/>
+                <response sourceId="Activity13" targetId="Activity14" filterLevel="1" description="" time="" groups=""/>
+                <response sourceId="Activity13" targetId="Activity15" filterLevel="1" description="" time="30" groups=""/>
+                <response sourceId="Activity3" targetId="Activity2_1" filterLevel="1" description="" time="" groups=""/>
+                <response sourceId="Activity2_1" targetId="Activity12" filterLevel="1" description="" time="" groups=""/>
+                <response sourceId="Activity3" targetId="Activity7" filterLevel="1" description="" time="20" groups=""/>
+                <response sourceId="Activity13_1" targetId="Activity3" filterLevel="1" description="" time="" groups=""/>
+                <response sourceId="Activity10" targetId="Activity13_1" filterLevel="1" description="" time="" groups=""/>
+                <response sourceId="Activity11" targetId="Activity14" filterLevel="1" description="" time="" groups=""/>
+            </responses>
+            <coresponses/>
+            <excludes>
+                <exclude sourceId="Activity2_1" targetId="Activity7" filterLevel="1" description="" time="" groups=""/>
+                <exclude sourceId="Activity2_1" targetId="Activity2_1" filterLevel="1" description="" time="" groups=""/>
+                <exclude sourceId="Activity12" targetId="Activity12" filterLevel="1" description="" time="" groups=""/>
+                <exclude sourceId="Activity14" targetId="Activity14" filterLevel="1" description="" time="" groups=""/>
+                <exclude sourceId="Activity13_1" targetId="Activity13_1" filterLevel="1" description="" time="" groups=""/>
+                <exclude sourceId="Activity12" targetId="Activity13_2" filterLevel="1" description="" time="" groups=""/>
+                <exclude sourceId="Activity2_1" targetId="Activity14_1" filterLevel="1" description="" time="" groups=""/>
+                <exclude sourceId="Activity10" targetId="Activity10" filterLevel="1" description="" time="" groups=""/>
+                <exclude sourceId="Activity11" targetId="Activity11" filterLevel="1" description="" time="" groups=""/>
+                <exclude sourceId="Activity13_1" targetId="Activity11" filterLevel="1" description="" time="" groups=""/>
+            </excludes>
+            <includes>
+                <include sourceId="Activity3" targetId="Activity13_1" filterLevel="1" description="" time="" groups=""/>
+                <include sourceId="Activity13" targetId="Activity14" filterLevel="1" description="" time="" groups=""/>
+                <include sourceId="Activity3" targetId="Activity5" filterLevel="1" description="" time="" groups=""/>
+                <include sourceId="Activity13" targetId="Activity15" filterLevel="1" description="" time="" groups=""/>
+                <include sourceId="Activity12" targetId="Activity2_1" filterLevel="1" description="" time="" groups=""/>
+                <include sourceId="Activity2_1" targetId="Activity12" filterLevel="1" description="" time="" groups=""/>
+                <include sourceId="Activity10" targetId="Activity13_1" filterLevel="1" description="" time="" groups=""/>
+                <include sourceId="Activity11" targetId="Activity14" filterLevel="1" description="" time="" groups=""/>
+                <include sourceId="Activity2_1" targetId="Activity13_2" filterLevel="1" description="" time="" groups=""/>
+                <include sourceId="Activity3" targetId="Activity7" filterLevel="1" description="" time="" groups=""/>
+                <include sourceId="Activity13_1" targetId="Activity10" filterLevel="1" description="" time="" groups=""/>
+                <include sourceId="Activity10" targetId="Activity11" filterLevel="1" description="" time="" groups=""/>
+                <include sourceId="Activity14" targetId="Activity11" filterLevel="1" description="" time="" groups=""/>
+            </includes>
+            <milestones>
+                <milestone sourceId="Activity8" targetId="Activity12" filterLevel="1" description="" time="" groups=""/>
+                <milestone sourceId="Activity14" targetId="Activity13" filterLevel="1" description="" time="" groups=""/>
+                <milestone sourceId="Activity14" targetId="Activity13_1" filterLevel="1" description="" time="" groups=""/>
+                <milestone sourceId="Activity3" targetId="Activity13" filterLevel="1" description="" time="" groups=""/>
+                <milestone sourceId="Activity3" targetId="Activity2_1" filterLevel="1" description="" time="" groups=""/>
+                <milestone sourceId="Activity14" targetId="Activity11" filterLevel="1" description="" time="" groups=""/>
+                <milestone sourceId="Activity12" targetId="Activity12_1" filterLevel="1" description="" time="" groups=""/>
+                <milestone sourceId="Activity13_1" targetId="Activity3" filterLevel="1" description="" time="" groups=""/>
+                <milestone sourceId="Activity13_1" targetId="Activity10" filterLevel="1" description="" time="" groups=""/>
+            </milestones>
+            <updates/>
+            <spawns/>
+            <templateSpawns/>
+        </constraints>
+    </specification>
+    <runtime>
+        <custom>
+            <globalMarking/>
+        </custom>
+        <marking>
+            <globalStore/>
+            <executed/>
+            <included>
+                <event id="Activity7"/>
+                <event id="Activity2_1"/>
+                <event id="Activity8"/>
+                <event id="Activity12_1"/>
+                <event id="Activity3"/>
+                <event id="Activity13"/>
+                <event id="Activity14_1"/>
+            </included>
+            <pendingResponses>
+                <event id="Activity3"/>
+            </pendingResponses>
+        </marking>
+    </runtime>
+</dcrgraph>

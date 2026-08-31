@@ -1,0 +1,708 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<pnml xmlns="http://www.informatik.hu-berlin.de/top/pnml/ptNetb">
+  <declaration>
+    <structure>
+      <declarations>
+        <namedsort id="dot" name="dot">
+          <dot/>
+        </namedsort>
+      </declarations>
+    </structure>
+  </declaration>
+  <net active="true" id="netFromDCR" type="P/T net">
+    <place displayName="true" id="In_MakePayment_Re_5" initialMarking="0" invariant="&lt;= 5" name="In_MakePayment_Re_5" nameOffsetX="0" nameOffsetY="0" positionX="555" positionY="225">
+      <type>
+        <text>dot</text>
+        <structure>
+          <usersort declaration="dot"/>
+        </structure>
+      </type>
+    </place>
+    <place displayName="true" id="EditPaymentInfo_Ex" initialMarking="0" invariant="&lt; inf" name="EditPaymentInfo_Ex" nameOffsetX="0" nameOffsetY="0" positionX="570" positionY="150">
+      <type>
+        <text>dot</text>
+        <structure>
+          <usersort declaration="dot"/>
+        </structure>
+      </type>
+    </place>
+    <place displayName="true" id="MakePayment_Ex" initialMarking="0" invariant="&lt; inf" name="MakePayment_Ex" nameOffsetX="0" nameOffsetY="0" positionX="555" positionY="315">
+      <type>
+        <text>dot</text>
+        <structure>
+          <usersort declaration="dot"/>
+        </structure>
+      </type>
+    </place>
+    <place displayName="true" id="AddOrder_Ex" initialMarking="0" invariant="&lt; inf" name="AddOrder_Ex" nameOffsetX="0" nameOffsetY="0" positionX="525" positionY="420">
+      <type>
+        <text>dot</text>
+        <structure>
+          <usersort declaration="dot"/>
+        </structure>
+      </type>
+    </place>
+    <place displayName="true" id="AddOrder_In" initialMarking="1" invariant="&lt; inf" name="AddOrder_In" nameOffsetX="0" nameOffsetY="0" positionX="540" positionY="495">
+      <type>
+        <text>dot</text>
+        <structure>
+          <usersort declaration="dot"/>
+        </structure>
+      </type>
+    </place>
+    <transition angle="0" displayName="true" distribution="constant" firingMode="Random" id="MakePayment_7" infiniteServer="false" name="MakePayment_7" nameOffsetX="0" nameOffsetY="0" player="0" positionX="675" positionY="495" priority="0" urgent="false" value="1.0" weight="1.0"/>
+    <transition angle="0" displayName="true" distribution="constant" firingMode="Random" id="MakePayment_6" infiniteServer="false" name="MakePayment_6" nameOffsetX="0" nameOffsetY="0" player="0" positionX="675" positionY="420" priority="0" urgent="false" value="1.0" weight="1.0"/>
+    <transition angle="0" displayName="true" distribution="constant" firingMode="Random" id="EditPaymentInfo_0" infiniteServer="false" name="EditPaymentInfo_0" nameOffsetX="0" nameOffsetY="0" player="0" positionX="450" positionY="15" priority="0" urgent="false" value="1.0" weight="1.0"/>
+    <transition angle="0" displayName="true" distribution="constant" firingMode="Random" id="EditPaymentInfo_1" infiniteServer="false" name="EditPaymentInfo_1" nameOffsetX="0" nameOffsetY="0" player="0" positionX="405" positionY="90" priority="0" urgent="false" value="1.0" weight="1.0"/>
+    <transition angle="0" displayName="true" distribution="constant" firingMode="Random" id="AddOrder_4" infiniteServer="false" name="AddOrder_4" nameOffsetX="0" nameOffsetY="0" player="0" positionX="210" positionY="285" priority="0" urgent="false" value="1.0" weight="1.0"/>
+    <transition angle="0" displayName="true" distribution="constant" firingMode="Random" id="AddOrder_5" infiniteServer="false" name="AddOrder_5" nameOffsetX="0" nameOffsetY="0" player="0" positionX="210" positionY="210" priority="0" urgent="false" value="1.0" weight="1.0"/>
+    <arc id="A0" inscription="1" nameOffsetX="0" nameOffsetY="0" source="MakePayment_6" target="MakePayment_Ex" type="normal" weight="1">
+      <hlinscription>
+        <text>1'dot</text>
+        <structure>
+          <numberof>
+            <subterm>
+              <numberconstant value="1">
+                <positive/>
+              </numberconstant>
+            </subterm>
+            <subterm>
+              <useroperator declaration="dot"/>
+            </subterm>
+          </numberof>
+        </structure>
+      </hlinscription>
+      <arcpath arcPointType="false" id="0" xCoord="685" yCoord="430"/>
+      <arcpath arcPointType="false" id="1" xCoord="581" yCoord="339"/>
+    </arc>
+    <arc id="A1" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="EditPaymentInfo_Ex" target="EditPaymentInfo_0" type="timed" weight="1">
+      <hlinscription>
+        <text>1'dot</text>
+        <structure>
+          <numberof>
+            <subterm>
+              <numberconstant value="1">
+                <positive/>
+              </numberconstant>
+            </subterm>
+            <subterm>
+              <useroperator declaration="dot"/>
+            </subterm>
+          </numberof>
+        </structure>
+      </hlinscription>
+      <arcpath arcPointType="false" id="0" xCoord="575" yCoord="153"/>
+      <arcpath arcPointType="false" id="1" xCoord="470" yCoord="25"/>
+    </arc>
+    <arc id="I2" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="In_MakePayment_Re_5" target="AddOrder_4" type="tapnInhibitor" weight="1">
+      <hlinscription>
+        <text>1'dot</text>
+        <structure>
+          <numberof>
+            <subterm>
+              <numberconstant value="1">
+                <positive/>
+              </numberconstant>
+            </subterm>
+            <subterm>
+              <useroperator declaration="dot"/>
+            </subterm>
+          </numberof>
+        </structure>
+      </hlinscription>
+      <arcpath arcPointType="false" id="0" xCoord="555" yCoord="242"/>
+      <arcpath arcPointType="false" id="1" xCoord="230" yCoord="294"/>
+    </arc>
+    <arc id="A3" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="AddOrder_Ex" target="AddOrder_4" type="timed" weight="1">
+      <hlinscription>
+        <text>1'dot</text>
+        <structure>
+          <numberof>
+            <subterm>
+              <numberconstant value="1">
+                <positive/>
+              </numberconstant>
+            </subterm>
+            <subterm>
+              <useroperator declaration="dot"/>
+            </subterm>
+          </numberof>
+        </structure>
+      </hlinscription>
+      <arcpath arcPointType="false" id="0" xCoord="526" yCoord="429"/>
+      <arcpath arcPointType="false" id="1" xCoord="229" yCoord="300"/>
+    </arc>
+    <arc id="A4" inscription="1" nameOffsetX="0" nameOffsetY="0" source="AddOrder_5" target="AddOrder_Ex" type="normal" weight="1">
+      <hlinscription>
+        <text>1'dot</text>
+        <structure>
+          <numberof>
+            <subterm>
+              <numberconstant value="1">
+                <positive/>
+              </numberconstant>
+            </subterm>
+            <subterm>
+              <useroperator declaration="dot"/>
+            </subterm>
+          </numberof>
+        </structure>
+      </hlinscription>
+      <arcpath arcPointType="false" id="0" xCoord="229" yCoord="228"/>
+      <arcpath arcPointType="false" id="1" xCoord="527" yCoord="426"/>
+    </arc>
+    <arc id="I5" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="MakePayment_Ex" target="MakePayment_6" type="tapnInhibitor" weight="1">
+      <hlinscription>
+        <text>1'dot</text>
+        <structure>
+          <numberof>
+            <subterm>
+              <numberconstant value="1">
+                <positive/>
+              </numberconstant>
+            </subterm>
+            <subterm>
+              <useroperator declaration="dot"/>
+            </subterm>
+          </numberof>
+        </structure>
+      </hlinscription>
+      <arcpath arcPointType="false" id="0" xCoord="581" yCoord="340"/>
+      <arcpath arcPointType="false" id="1" xCoord="684" yCoord="435"/>
+    </arc>
+    <arc id="I6" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="AddOrder_In" target="MakePayment_6" type="tapnInhibitor" weight="1">
+      <hlinscription>
+        <text>1'dot</text>
+        <structure>
+          <numberof>
+            <subterm>
+              <numberconstant value="1">
+                <positive/>
+              </numberconstant>
+            </subterm>
+            <subterm>
+              <useroperator declaration="dot"/>
+            </subterm>
+          </numberof>
+        </structure>
+      </hlinscription>
+      <arcpath arcPointType="false" id="0" xCoord="568" yCoord="503"/>
+      <arcpath arcPointType="false" id="1" xCoord="684" yCoord="445"/>
+    </arc>
+    <arc id="A8" inscription="1" nameOffsetX="0" nameOffsetY="0" source="AddOrder_4" target="In_MakePayment_Re_5" type="normal" weight="1">
+      <hlinscription>
+        <text>1'dot</text>
+        <structure>
+          <numberof>
+            <subterm>
+              <numberconstant value="1">
+                <positive/>
+              </numberconstant>
+            </subterm>
+            <subterm>
+              <useroperator declaration="dot"/>
+            </subterm>
+          </numberof>
+        </structure>
+      </hlinscription>
+      <arcpath arcPointType="false" id="0" xCoord="230" yCoord="297"/>
+      <arcpath arcPointType="false" id="1" xCoord="555" yCoord="242"/>
+    </arc>
+    <arc id="A9" inscription="1" nameOffsetX="0" nameOffsetY="0" source="EditPaymentInfo_0" target="EditPaymentInfo_Ex" type="normal" weight="1">
+      <hlinscription>
+        <text>1'dot</text>
+        <structure>
+          <numberof>
+            <subterm>
+              <numberconstant value="1">
+                <positive/>
+              </numberconstant>
+            </subterm>
+            <subterm>
+              <useroperator declaration="dot"/>
+            </subterm>
+          </numberof>
+        </structure>
+      </hlinscription>
+      <arcpath arcPointType="false" id="0" xCoord="469" yCoord="35"/>
+      <arcpath arcPointType="false" id="1" xCoord="575" yCoord="153"/>
+    </arc>
+    <arc id="A11" inscription="1" nameOffsetX="0" nameOffsetY="0" source="AddOrder_4" target="AddOrder_Ex" type="normal" weight="1">
+      <hlinscription>
+        <text>1'dot</text>
+        <structure>
+          <numberof>
+            <subterm>
+              <numberconstant value="1">
+                <positive/>
+              </numberconstant>
+            </subterm>
+            <subterm>
+              <useroperator declaration="dot"/>
+            </subterm>
+          </numberof>
+        </structure>
+      </hlinscription>
+      <arcpath arcPointType="false" id="0" xCoord="229" yCoord="303"/>
+      <arcpath arcPointType="false" id="1" xCoord="526" yCoord="429"/>
+    </arc>
+    <arc id="A12" inscription="1" nameOffsetX="0" nameOffsetY="0" source="EditPaymentInfo_1" target="EditPaymentInfo_Ex" type="normal" weight="1">
+      <hlinscription>
+        <text>1'dot</text>
+        <structure>
+          <numberof>
+            <subterm>
+              <numberconstant value="1">
+                <positive/>
+              </numberconstant>
+            </subterm>
+            <subterm>
+              <useroperator declaration="dot"/>
+            </subterm>
+          </numberof>
+        </structure>
+      </hlinscription>
+      <arcpath arcPointType="false" id="0" xCoord="424" yCoord="110"/>
+      <arcpath arcPointType="false" id="1" xCoord="570" yCoord="160"/>
+    </arc>
+    <arc id="I11" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="In_MakePayment_Re_5" target="AddOrder_5" type="tapnInhibitor" weight="1">
+      <hlinscription>
+        <text>1'dot</text>
+        <structure>
+          <numberof>
+            <subterm>
+              <numberconstant value="1">
+                <positive/>
+              </numberconstant>
+            </subterm>
+            <subterm>
+              <useroperator declaration="dot"/>
+            </subterm>
+          </numberof>
+        </structure>
+      </hlinscription>
+      <arcpath arcPointType="false" id="0" xCoord="555" yCoord="239"/>
+      <arcpath arcPointType="false" id="1" xCoord="230" yCoord="219"/>
+    </arc>
+    <arc id="A14" inscription="1" nameOffsetX="0" nameOffsetY="0" source="MakePayment_6" target="AddOrder_In" type="normal" weight="1">
+      <hlinscription>
+        <text>1'dot</text>
+        <structure>
+          <numberof>
+            <subterm>
+              <numberconstant value="1">
+                <positive/>
+              </numberconstant>
+            </subterm>
+            <subterm>
+              <useroperator declaration="dot"/>
+            </subterm>
+          </numberof>
+        </structure>
+      </hlinscription>
+      <arcpath arcPointType="false" id="0" xCoord="684" yCoord="440"/>
+      <arcpath arcPointType="false" id="1" xCoord="568" yCoord="502"/>
+    </arc>
+    <arc id="A15" inscription="1" nameOffsetX="0" nameOffsetY="0" source="MakePayment_7" target="MakePayment_Ex" type="normal" weight="1">
+      <hlinscription>
+        <text>1'dot</text>
+        <structure>
+          <numberof>
+            <subterm>
+              <numberconstant value="1">
+                <positive/>
+              </numberconstant>
+            </subterm>
+            <subterm>
+              <useroperator declaration="dot"/>
+            </subterm>
+          </numberof>
+        </structure>
+      </hlinscription>
+      <arcpath arcPointType="false" id="0" xCoord="685" yCoord="501"/>
+      <arcpath arcPointType="false" id="1" xCoord="578" yCoord="342"/>
+    </arc>
+    <arc id="A16" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="AddOrder_In" target="AddOrder_5" type="timed" weight="1">
+      <hlinscription>
+        <text>1'dot</text>
+        <structure>
+          <numberof>
+            <subterm>
+              <numberconstant value="1">
+                <positive/>
+              </numberconstant>
+            </subterm>
+            <subterm>
+              <useroperator declaration="dot"/>
+            </subterm>
+          </numberof>
+        </structure>
+      </hlinscription>
+      <arcpath arcPointType="false" id="0" xCoord="543" yCoord="500"/>
+      <arcpath arcPointType="false" id="1" xCoord="229" yCoord="231"/>
+    </arc>
+    <arc id="A17" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="AddOrder_In" target="AddOrder_4" type="timed" weight="1">
+      <hlinscription>
+        <text>1'dot</text>
+        <structure>
+          <numberof>
+            <subterm>
+              <numberconstant value="1">
+                <positive/>
+              </numberconstant>
+            </subterm>
+            <subterm>
+              <useroperator declaration="dot"/>
+            </subterm>
+          </numberof>
+        </structure>
+      </hlinscription>
+      <arcpath arcPointType="false" id="0" xCoord="542" yCoord="502"/>
+      <arcpath arcPointType="false" id="1" xCoord="229" yCoord="306"/>
+    </arc>
+    <arc id="A18" inscription="1" nameOffsetX="0" nameOffsetY="0" source="AddOrder_5" target="In_MakePayment_Re_5" type="normal" weight="1">
+      <hlinscription>
+        <text>1'dot</text>
+        <structure>
+          <numberof>
+            <subterm>
+              <numberconstant value="1">
+                <positive/>
+              </numberconstant>
+            </subterm>
+            <subterm>
+              <useroperator declaration="dot"/>
+            </subterm>
+          </numberof>
+        </structure>
+      </hlinscription>
+      <arcpath arcPointType="false" id="0" xCoord="230" yCoord="222"/>
+      <arcpath arcPointType="false" id="1" xCoord="555" yCoord="239"/>
+    </arc>
+    <arc id="A20" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="In_MakePayment_Re_5" target="MakePayment_7" type="timed" weight="1">
+      <hlinscription>
+        <text>1'dot</text>
+        <structure>
+          <numberof>
+            <subterm>
+              <numberconstant value="1">
+                <positive/>
+              </numberconstant>
+            </subterm>
+            <subterm>
+              <useroperator declaration="dot"/>
+            </subterm>
+          </numberof>
+        </structure>
+      </hlinscription>
+      <arcpath arcPointType="false" id="0" xCoord="576" yCoord="253"/>
+      <arcpath arcPointType="false" id="1" xCoord="689" yCoord="494"/>
+    </arc>
+    <arc id="A22" inscription="[0,inf):5" nameOffsetX="0" nameOffsetY="0" source="EditPaymentInfo_Ex" target="AddOrder_5" transportID="1" type="transport" weight="1">
+      <hlinscription>
+        <text>1'dot</text>
+        <structure>
+          <numberof>
+            <subterm>
+              <numberconstant value="1">
+                <positive/>
+              </numberconstant>
+            </subterm>
+            <subterm>
+              <useroperator declaration="dot"/>
+            </subterm>
+          </numberof>
+        </structure>
+      </hlinscription>
+      <arcpath arcPointType="false" id="0" xCoord="570" yCoord="167"/>
+      <arcpath arcPointType="false" id="1" xCoord="230" yCoord="213"/>
+    </arc>
+    <arc id="A7" inscription="[0,inf):5" nameOffsetX="0" nameOffsetY="0" source="AddOrder_5" target="EditPaymentInfo_Ex" transportID="1" type="transport" weight="1">
+      <hlinscription>
+        <text>1'dot</text>
+        <structure>
+          <numberof>
+            <subterm>
+              <numberconstant value="1">
+                <positive/>
+              </numberconstant>
+            </subterm>
+            <subterm>
+              <useroperator declaration="dot"/>
+            </subterm>
+          </numberof>
+        </structure>
+      </hlinscription>
+      <arcpath arcPointType="false" id="0" xCoord="230" yCoord="216"/>
+      <arcpath arcPointType="false" id="1" xCoord="570" yCoord="167"/>
+    </arc>
+    <arc id="A10" inscription="[3,inf):15" nameOffsetX="0" nameOffsetY="0" source="EditPaymentInfo_Ex" target="MakePayment_7" transportID="2" type="transport" weight="1">
+      <hlinscription>
+        <text>1'dot</text>
+        <structure>
+          <numberof>
+            <subterm>
+              <numberconstant value="1">
+                <positive/>
+              </numberconstant>
+            </subterm>
+            <subterm>
+              <useroperator declaration="dot"/>
+            </subterm>
+          </numberof>
+        </structure>
+      </hlinscription>
+      <arcpath arcPointType="false" id="0" xCoord="589" yCoord="179"/>
+      <arcpath arcPointType="false" id="1" xCoord="689" yCoord="494"/>
+    </arc>
+    <arc id="A23" inscription="[3,inf):15" nameOffsetX="0" nameOffsetY="0" source="MakePayment_7" target="EditPaymentInfo_Ex" transportID="2" type="transport" weight="1">
+      <hlinscription>
+        <text>1'dot</text>
+        <structure>
+          <numberof>
+            <subterm>
+              <numberconstant value="1">
+                <positive/>
+              </numberconstant>
+            </subterm>
+            <subterm>
+              <useroperator declaration="dot"/>
+            </subterm>
+          </numberof>
+        </structure>
+      </hlinscription>
+      <arcpath arcPointType="false" id="0" xCoord="689" yCoord="494"/>
+      <arcpath arcPointType="false" id="1" xCoord="589" yCoord="179"/>
+    </arc>
+    <arc id="I22" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="AddOrder_In" target="MakePayment_7" type="tapnInhibitor" weight="1">
+      <hlinscription>
+        <text>1'dot</text>
+        <structure>
+          <numberof>
+            <subterm>
+              <numberconstant value="1">
+                <positive/>
+              </numberconstant>
+            </subterm>
+            <subterm>
+              <useroperator declaration="dot"/>
+            </subterm>
+          </numberof>
+        </structure>
+      </hlinscription>
+      <arcpath arcPointType="false" id="0" xCoord="569" yCoord="511"/>
+      <arcpath arcPointType="false" id="1" xCoord="684" yCoord="519"/>
+    </arc>
+    <arc id="I23" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="EditPaymentInfo_Ex" target="EditPaymentInfo_1" type="tapnInhibitor" weight="1">
+      <hlinscription>
+        <text>1'dot</text>
+        <structure>
+          <numberof>
+            <subterm>
+              <numberconstant value="1">
+                <positive/>
+              </numberconstant>
+            </subterm>
+            <subterm>
+              <useroperator declaration="dot"/>
+            </subterm>
+          </numberof>
+        </structure>
+      </hlinscription>
+      <arcpath arcPointType="false" id="0" xCoord="571" yCoord="159"/>
+      <arcpath arcPointType="false" id="1" xCoord="425" yCoord="100"/>
+    </arc>
+    <arc id="A21" inscription="[0,inf):4" nameOffsetX="0" nameOffsetY="0" source="EditPaymentInfo_Ex" target="AddOrder_4" transportID="3" type="transport" weight="1">
+      <hlinscription>
+        <text>1'dot</text>
+        <structure>
+          <numberof>
+            <subterm>
+              <numberconstant value="1">
+                <positive/>
+              </numberconstant>
+            </subterm>
+            <subterm>
+              <useroperator declaration="dot"/>
+            </subterm>
+          </numberof>
+        </structure>
+      </hlinscription>
+      <arcpath arcPointType="false" id="0" xCoord="570" yCoord="170"/>
+      <arcpath arcPointType="false" id="1" xCoord="230" yCoord="291"/>
+    </arc>
+    <arc id="A26" inscription="[0,inf):4" nameOffsetX="0" nameOffsetY="0" source="AddOrder_4" target="EditPaymentInfo_Ex" transportID="3" type="transport" weight="1">
+      <hlinscription>
+        <text>1'dot</text>
+        <structure>
+          <numberof>
+            <subterm>
+              <numberconstant value="1">
+                <positive/>
+              </numberconstant>
+            </subterm>
+            <subterm>
+              <useroperator declaration="dot"/>
+            </subterm>
+          </numberof>
+        </structure>
+      </hlinscription>
+      <arcpath arcPointType="false" id="0" xCoord="230" yCoord="288"/>
+      <arcpath arcPointType="false" id="1" xCoord="570" yCoord="169"/>
+    </arc>
+    <arc id="A27" inscription="1" nameOffsetX="0" nameOffsetY="0" source="MakePayment_7" target="AddOrder_In" type="normal" weight="1">
+      <hlinscription>
+        <text>1'dot</text>
+        <structure>
+          <numberof>
+            <subterm>
+              <numberconstant value="1">
+                <positive/>
+              </numberconstant>
+            </subterm>
+            <subterm>
+              <useroperator declaration="dot"/>
+            </subterm>
+          </numberof>
+        </structure>
+      </hlinscription>
+      <arcpath arcPointType="false" id="0" xCoord="684" yCoord="513"/>
+      <arcpath arcPointType="false" id="1" xCoord="569" yCoord="510"/>
+    </arc>
+    <arc id="A19" inscription="[3,inf):14" nameOffsetX="0" nameOffsetY="0" source="EditPaymentInfo_Ex" target="MakePayment_6" transportID="4" type="transport" weight="1">
+      <hlinscription>
+        <text>1'dot</text>
+        <structure>
+          <numberof>
+            <subterm>
+              <numberconstant value="1">
+                <positive/>
+              </numberconstant>
+            </subterm>
+            <subterm>
+              <useroperator declaration="dot"/>
+            </subterm>
+          </numberof>
+        </structure>
+      </hlinscription>
+      <arcpath arcPointType="false" id="0" xCoord="590" yCoord="178"/>
+      <arcpath arcPointType="false" id="1" xCoord="689" yCoord="419"/>
+    </arc>
+    <arc id="A28" inscription="[3,inf):14" nameOffsetX="0" nameOffsetY="0" source="MakePayment_6" target="EditPaymentInfo_Ex" transportID="4" type="transport" weight="1">
+      <hlinscription>
+        <text>1'dot</text>
+        <structure>
+          <numberof>
+            <subterm>
+              <numberconstant value="1">
+                <positive/>
+              </numberconstant>
+            </subterm>
+            <subterm>
+              <useroperator declaration="dot"/>
+            </subterm>
+          </numberof>
+        </structure>
+      </hlinscription>
+      <arcpath arcPointType="false" id="0" xCoord="689" yCoord="419"/>
+      <arcpath arcPointType="false" id="1" xCoord="590" yCoord="178"/>
+    </arc>
+    <arc id="I29" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="AddOrder_Ex" target="AddOrder_5" type="tapnInhibitor" weight="1">
+      <hlinscription>
+        <text>1'dot</text>
+        <structure>
+          <numberof>
+            <subterm>
+              <numberconstant value="1">
+                <positive/>
+              </numberconstant>
+            </subterm>
+            <subterm>
+              <useroperator declaration="dot"/>
+            </subterm>
+          </numberof>
+        </structure>
+      </hlinscription>
+      <arcpath arcPointType="false" id="0" xCoord="527" yCoord="426"/>
+      <arcpath arcPointType="false" id="1" xCoord="229" yCoord="225"/>
+    </arc>
+    <arc id="A30" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="In_MakePayment_Re_5" target="MakePayment_6" type="timed" weight="1">
+      <hlinscription>
+        <text>1'dot</text>
+        <structure>
+          <numberof>
+            <subterm>
+              <numberconstant value="1">
+                <positive/>
+              </numberconstant>
+            </subterm>
+            <subterm>
+              <useroperator declaration="dot"/>
+            </subterm>
+          </numberof>
+        </structure>
+      </hlinscription>
+      <arcpath arcPointType="false" id="0" xCoord="577" yCoord="252"/>
+      <arcpath arcPointType="false" id="1" xCoord="685" yCoord="425"/>
+    </arc>
+    <arc id="A31" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="MakePayment_Ex" target="MakePayment_7" type="timed" weight="1">
+      <hlinscription>
+        <text>1'dot</text>
+        <structure>
+          <numberof>
+            <subterm>
+              <numberconstant value="1">
+                <positive/>
+              </numberconstant>
+            </subterm>
+            <subterm>
+              <useroperator declaration="dot"/>
+            </subterm>
+          </numberof>
+        </structure>
+      </hlinscription>
+      <arcpath arcPointType="false" id="0" xCoord="578" yCoord="342"/>
+      <arcpath arcPointType="false" id="1" xCoord="685" yCoord="507"/>
+    </arc>
+  </net>
+  <query active="true" algorithmOption="CERTAIN_ZERO" approximationDenominator="2" capacity="1" colorFixpoint="true" coloredReduction="false" discreteInclusion="false" enableOverApproximation="false" enableUnderApproximation="false" extrapolationOption="AUTOMATIC" gcd="false" hashTableSize="MB_16" inclusionPlaces="*NONE*" name="AG !(deadlock)" overApproximation="false" pTrie="true" partitioning="true" reduction="true" reductionOption="VerifyDTAPN" searchOption="HEURISTIC" symmetricVars="true" symmetry="true" timeDarts="false" traceOption="NONE" type="Default" useQueryReduction="true" useSiphonTrapAnalysis="false" useStubbornReduction="true" useTarOption="false" useTarjan="false">
+    <formula>
+      <all-paths>
+        <globally>
+          <negation>
+            <deadlock/>
+          </negation>
+        </globally>
+      </all-paths>
+    </formula>
+  </query>
+  <query active="true" algorithmOption="CERTAIN_ZERO" approximationDenominator="2" capacity="4" colorFixpoint="true" coloredReduction="false" discreteInclusion="false" enableOverApproximation="false" enableUnderApproximation="false" extrapolationOption="AUTOMATIC" gcd="true" hashTableSize="MB_16" inclusionPlaces="*NONE*" name="EF netFromDCR.MakePayment_Ex = 1" overApproximation="true" pTrie="true" partitioning="true" reduction="true" reductionOption="VerifyDTAPN" searchOption="HEURISTIC" symmetricVars="true" symmetry="true" timeDarts="false" traceOption="NONE" type="Default" useQueryReduction="true" useSiphonTrapAnalysis="false" useStubbornReduction="true" useTarOption="false" useTarjan="false">
+    <formula>
+      <exists-path>
+        <finally>
+          <integer-eq>
+            <tokens-count>
+              <place>netFromDCR.MakePayment_Ex</place>
+            </tokens-count>
+            <integer-constant>1</integer-constant>
+          </integer-eq>
+        </finally>
+      </exists-path>
+    </formula>
+  </query>
+  <query active="true" algorithmOption="CERTAIN_ZERO" approximationDenominator="2" capacity="1" colorFixpoint="false" coloredReduction="false" discreteInclusion="false" enableOverApproximation="false" enableUnderApproximation="false" extrapolationOption="null" gcd="false" hashTableSize="null" inclusionPlaces="*NONE*" name="AF netFromDCR.MakePayment_Ex = 1" overApproximation="false" pTrie="true" partitioning="false" reduction="true" reductionOption="VerifyDTAPN" searchOption="DFS" symmetricVars="false" symmetry="true" timeDarts="false" traceOption="NONE" type="Default" useQueryReduction="true" useSiphonTrapAnalysis="false" useStubbornReduction="false" useTarOption="false" useTarjan="false">
+    <formula>
+      <all-paths>
+        <finally>
+          <integer-eq>
+            <tokens-count>
+              <place>netFromDCR.MakePayment_Ex</place>
+            </tokens-count>
+            <integer-constant>1</integer-constant>
+          </integer-eq>
+        </finally>
+      </all-paths>
+    </formula>
+  </query>
+  <feature isColored="false" isGame="false" isStochastic="false" isTimed="true"/>
+</pnml>

@@ -1,0 +1,398 @@
+<nta>
+<declaration>const int N = 7;
+typedef scalar[N] id_t;
+chan c0;
+chan c1;
+urgent broadcast chan __fill_remove_from_trace__;
+chan netFromDCR_MakePayment_11;
+broadcast chan netFromDCR_AddOrder_6_test,netFromDCR_AddOrder_6_fire;
+broadcast chan netFromDCR_AddOrder_7_test,netFromDCR_AddOrder_7_fire;
+broadcast chan netFromDCR_EditPaymentInfo_0_test,netFromDCR_EditPaymentInfo_0_fire;
+chan netFromDCR_MakePayment_10;
+broadcast chan netFromDCR_EditPaymentInfo_1_test,netFromDCR_EditPaymentInfo_1_fire;
+int[0,N] count0;
+int[0,N] count1;
+int[0,N] count2;
+int[0,N] count3;
+int[0,N] count4;
+int[0,N] count5;
+int[0,N] count6;
+int X_netFromDCR_MakePayment_In = 0; 
+int X_netFromDCR_MakePayment_Ex = 0; 
+int X_netFromDCR_AddOrder_Ex = 0; 
+int X_netFromDCR_AddOrder_In = 1; 
+int Max = 7; 
+int Active = 3; 
+bool lock = false;
+int CapacityOutTokens = 0;
+int CapacityInTokens = 7; 
+</declaration>
+<template>
+<name x="5" y="5">Token</name>
+<parameter>const id_t id</parameter>
+<declaration>clock x;</declaration>
+<location id="a42775" >
+<name>netFromDCR_MakePayment_Re_5</name>
+<label kind="invariant">x &lt;= 5</label>
+</location>
+<location id="a42776" >
+<name>netFromDCR_EditPaymentInfo_Ex</name>
+</location>
+<location id="a42777" >
+<name>netFromDCR_EditPaymentInfo_Re_1</name>
+<label kind="invariant">x &lt;= 1</label>
+</location>
+<location id="a42778" >
+<name>netFromDCR_AddOrder_Re_2</name>
+<label kind="invariant">x &lt;= 2</label>
+</location>
+<location id="a42779" >
+<name>_BOTTOMIN_</name>
+</location>
+<location id="a42780" >
+<name>_BOTTOMOUT_</name>
+<label kind="invariant">CapacityOutTokens &lt;= 1</label>
+</location>
+<location id="a42781" >
+<name>_BOTTOMOUT__netFromDCR_AddOrder_6_0</name>
+<committed/>
+</location>
+<location id="a42782" >
+<name>netFromDCR_EditPaymentInfo_Ex_netFromDCR_AddOrder_6_1</name>
+<committed/>
+</location>
+<location id="a42783" >
+<name>netFromDCR_AddOrder_Re_2_netFromDCR_AddOrder_7_0</name>
+<committed/>
+</location>
+<location id="a42784" >
+<name>netFromDCR_EditPaymentInfo_Ex_netFromDCR_AddOrder_7_1</name>
+<committed/>
+</location>
+<location id="a42785" >
+<name>netFromDCR_EditPaymentInfo_Ex_netFromDCR_EditPaymentInfo_0_0</name>
+<committed/>
+</location>
+<location id="a42786" >
+<name>netFromDCR_EditPaymentInfo_Re_1_netFromDCR_EditPaymentInfo_1_0</name>
+<committed/>
+</location>
+<init ref="a42779" />
+<transition>
+<source ref="a42775" />
+<target ref="a42779" />
+<label kind="guard">(CapacityOutTokens == 1 || CapacityInTokens == 0) &amp;&amp; lock == 0 &amp;&amp; X_netFromDCR_MakePayment_In&gt;=1 &amp;&amp; X_netFromDCR_MakePayment_Ex&gt;=1 &amp;&amp; X_netFromDCR_AddOrder_In&lt;1</label>
+<label kind="synchronisation">netFromDCR_MakePayment_11!</label>
+<label kind="assignment">x := 0, X_netFromDCR_MakePayment_In = X_netFromDCR_MakePayment_In - 1, X_netFromDCR_MakePayment_Ex = X_netFromDCR_MakePayment_Ex - 1 , X_netFromDCR_MakePayment_Ex = X_netFromDCR_MakePayment_Ex + 1 , X_netFromDCR_AddOrder_In = X_netFromDCR_AddOrder_In + 1, CapacityInTokens = CapacityInTokens + 1 , Active = Active + -1</label>
+</transition>
+<transition>
+<source ref="a42776" />
+<target ref="a42776" />
+<label kind="guard">x &gt;= 3</label>
+<label kind="synchronisation">netFromDCR_MakePayment_11?</label>
+<label kind="assignment"></label>
+</transition>
+<transition>
+<source ref="a42780" />
+<target ref="a42781" />
+<label kind="guard"></label>
+<label kind="synchronisation">netFromDCR_AddOrder_6_test?</label>
+<label kind="assignment">count0++, CapacityOutTokens--</label>
+</transition>
+<transition>
+<source ref="a42781" />
+<target ref="a42775" />
+<label kind="guard"></label>
+<label kind="synchronisation">netFromDCR_AddOrder_6_fire?</label>
+<label kind="assignment">x := 0</label>
+</transition>
+<transition>
+<source ref="a42781" />
+<target ref="a42780" />
+<label kind="guard">count0&gt;1</label>
+<label kind="synchronisation"></label>
+<label kind="assignment">count0--, CapacityOutTokens++</label>
+</transition>
+<transition>
+<source ref="a42776" />
+<target ref="a42782" />
+<label kind="guard"></label>
+<label kind="synchronisation">netFromDCR_AddOrder_6_test?</label>
+<label kind="assignment">count1++</label>
+</transition>
+<transition>
+<source ref="a42782" />
+<target ref="a42776" />
+<label kind="guard"></label>
+<label kind="synchronisation">netFromDCR_AddOrder_6_fire?</label>
+<label kind="assignment"></label>
+</transition>
+<transition>
+<source ref="a42782" />
+<target ref="a42776" />
+<label kind="guard">count1&gt;1</label>
+<label kind="synchronisation"></label>
+<label kind="assignment">count1--</label>
+</transition>
+<transition>
+<source ref="a42775" />
+<target ref="a42775" />
+<label kind="guard"></label>
+<label kind="synchronisation">netFromDCR_AddOrder_6_test?</label>
+<label kind="assignment">count2++</label>
+</transition>
+<transition>
+<source ref="a42778" />
+<target ref="a42778" />
+<label kind="guard"></label>
+<label kind="synchronisation">netFromDCR_AddOrder_6_test?</label>
+<label kind="assignment">count3++</label>
+</transition>
+<transition>
+<source ref="a42778" />
+<target ref="a42783" />
+<label kind="guard"></label>
+<label kind="synchronisation">netFromDCR_AddOrder_7_test?</label>
+<label kind="assignment">count0++</label>
+</transition>
+<transition>
+<source ref="a42783" />
+<target ref="a42775" />
+<label kind="guard"></label>
+<label kind="synchronisation">netFromDCR_AddOrder_7_fire?</label>
+<label kind="assignment">x := 0</label>
+</transition>
+<transition>
+<source ref="a42783" />
+<target ref="a42778" />
+<label kind="guard">count0&gt;1</label>
+<label kind="synchronisation"></label>
+<label kind="assignment">count0--</label>
+</transition>
+<transition>
+<source ref="a42776" />
+<target ref="a42784" />
+<label kind="guard"></label>
+<label kind="synchronisation">netFromDCR_AddOrder_7_test?</label>
+<label kind="assignment">count1++</label>
+</transition>
+<transition>
+<source ref="a42784" />
+<target ref="a42776" />
+<label kind="guard"></label>
+<label kind="synchronisation">netFromDCR_AddOrder_7_fire?</label>
+<label kind="assignment"></label>
+</transition>
+<transition>
+<source ref="a42784" />
+<target ref="a42776" />
+<label kind="guard">count1&gt;1</label>
+<label kind="synchronisation"></label>
+<label kind="assignment">count1--</label>
+</transition>
+<transition>
+<source ref="a42775" />
+<target ref="a42775" />
+<label kind="guard"></label>
+<label kind="synchronisation">netFromDCR_AddOrder_7_test?</label>
+<label kind="assignment">count2++</label>
+</transition>
+<transition>
+<source ref="a42776" />
+<target ref="a42785" />
+<label kind="guard"></label>
+<label kind="synchronisation">netFromDCR_EditPaymentInfo_0_test?</label>
+<label kind="assignment">count0++</label>
+</transition>
+<transition>
+<source ref="a42785" />
+<target ref="a42776" />
+<label kind="guard"></label>
+<label kind="synchronisation">netFromDCR_EditPaymentInfo_0_fire?</label>
+<label kind="assignment">x := 0</label>
+</transition>
+<transition>
+<source ref="a42785" />
+<target ref="a42776" />
+<label kind="guard">count0&gt;1</label>
+<label kind="synchronisation"></label>
+<label kind="assignment">count0--</label>
+</transition>
+<transition>
+<source ref="a42777" />
+<target ref="a42777" />
+<label kind="guard"></label>
+<label kind="synchronisation">netFromDCR_EditPaymentInfo_0_test?</label>
+<label kind="assignment">count1++</label>
+</transition>
+<transition>
+<source ref="a42775" />
+<target ref="a42779" />
+<label kind="guard">(CapacityOutTokens == 1 || CapacityInTokens == 0) &amp;&amp; lock == 0 &amp;&amp; X_netFromDCR_MakePayment_In&gt;=1 &amp;&amp; X_netFromDCR_AddOrder_In&lt;1 &amp;&amp; X_netFromDCR_MakePayment_Ex&lt;1</label>
+<label kind="synchronisation">netFromDCR_MakePayment_10!</label>
+<label kind="assignment">x := 0, X_netFromDCR_MakePayment_In = X_netFromDCR_MakePayment_In - 1 , X_netFromDCR_MakePayment_Ex = X_netFromDCR_MakePayment_Ex + 1 , X_netFromDCR_AddOrder_In = X_netFromDCR_AddOrder_In + 1, CapacityInTokens = CapacityInTokens + 1 , Active = Active + 0</label>
+</transition>
+<transition>
+<source ref="a42776" />
+<target ref="a42776" />
+<label kind="guard">x &gt;= 3</label>
+<label kind="synchronisation">netFromDCR_MakePayment_10?</label>
+<label kind="assignment"></label>
+</transition>
+<transition>
+<source ref="a42777" />
+<target ref="a42786" />
+<label kind="guard"></label>
+<label kind="synchronisation">netFromDCR_EditPaymentInfo_1_test?</label>
+<label kind="assignment">count0++</label>
+</transition>
+<transition>
+<source ref="a42786" />
+<target ref="a42776" />
+<label kind="guard"></label>
+<label kind="synchronisation">netFromDCR_EditPaymentInfo_1_fire?</label>
+<label kind="assignment">x := 0</label>
+</transition>
+<transition>
+<source ref="a42786" />
+<target ref="a42777" />
+<label kind="guard">count0&gt;1</label>
+<label kind="synchronisation"></label>
+<label kind="assignment">count0--</label>
+</transition>
+<transition>
+<source ref="a42776" />
+<target ref="a42776" />
+<label kind="guard"></label>
+<label kind="synchronisation">netFromDCR_EditPaymentInfo_1_test?</label>
+<label kind="assignment">count1++</label>
+</transition>
+<transition>
+<source ref="a42779" />
+<target ref="a42780" />
+<label kind="guard">CapacityOutTokens &lt; 1</label>
+<label kind="synchronisation">__fill_remove_from_trace__!</label>
+<label kind="assignment">CapacityOutTokens++, CapacityInTokens--</label>
+</transition>
+<transition>
+<source ref="a42779" />
+<target ref="a42777" />
+<label kind="guard"></label>
+<label kind="synchronisation">c0?</label>
+<label kind="assignment">CapacityInTokens--</label>
+</transition>
+<transition>
+<source ref="a42779" />
+<target ref="a42778" />
+<label kind="guard"></label>
+<label kind="synchronisation">c1?</label>
+<label kind="assignment">CapacityInTokens--</label>
+</transition>
+</template>
+<template>
+<name x="5" y="5">Control</name>
+<location id="a42787" >
+<name>P_lock</name>
+</location>
+<location id="a42788" >
+<name></name>
+<committed/>
+</location>
+<location id="a42789" >
+<name></name>
+<committed/>
+</location>
+<location id="a42790" >
+<name></name>
+<label kind="invariant">count0>=1 &amp;&amp; count1>=1 &amp;&amp; count2&lt;1 &amp;&amp; count3&lt;1</label>
+<committed/>
+</location>
+<location id="a42791" >
+<name></name>
+<label kind="invariant">count0>=1 &amp;&amp; count1>=1 &amp;&amp; count2&lt;1</label>
+<committed/>
+</location>
+<location id="a42792" >
+<name></name>
+<label kind="invariant">count0>=1 &amp;&amp; count1&lt;1</label>
+<committed/>
+</location>
+<location id="a42793" >
+<name></name>
+<label kind="invariant">count0>=1 &amp;&amp; count1&lt;1</label>
+<committed/>
+</location>
+<init ref="a42788" />
+<transition>
+<source ref="a42788" />
+<target ref="a42789" />
+<label kind="guard"></label>
+<label kind="synchronisation">c0!</label>
+<label kind="assignment"></label>
+</transition>
+<transition>
+<source ref="a42789" />
+<target ref="a42787" />
+<label kind="guard"></label>
+<label kind="synchronisation">c1!</label>
+<label kind="assignment"></label>
+</transition>
+<transition>
+<source ref="a42787" />
+<target ref="a42790" />
+<label kind="guard">(CapacityOutTokens == 1 || CapacityInTokens == 0) &amp;&amp; X_netFromDCR_AddOrder_Ex &gt;= 1 &amp;&amp; X_netFromDCR_AddOrder_In &gt;= 1 &amp;&amp; X_netFromDCR_MakePayment_In &lt; 1 &amp;&amp; Active + 1 &lt;= Max</label>
+<label kind="synchronisation">netFromDCR_AddOrder_6_test!</label>
+<label kind="assignment">lock = true</label>
+</transition>
+<transition>
+<source ref="a42790" />
+<target ref="a42787" />
+<label kind="guard">count0==1 &amp;&amp; count1==1 &amp;&amp; count2&lt;1 &amp;&amp; count3&lt;1</label>
+<label kind="synchronisation">netFromDCR_AddOrder_6_fire!</label>
+<label kind="assignment">X_netFromDCR_AddOrder_Ex = X_netFromDCR_AddOrder_Ex - 1, X_netFromDCR_AddOrder_In = X_netFromDCR_AddOrder_In - 1, count0:=0, X_netFromDCR_MakePayment_In = X_netFromDCR_MakePayment_In + 1, X_netFromDCR_AddOrder_Ex = X_netFromDCR_AddOrder_Ex + 1, count1:=0, count2:=0, count3:=0, lock = false , Active = Active + 1</label>
+</transition>
+<transition>
+<source ref="a42787" />
+<target ref="a42791" />
+<label kind="guard">(CapacityOutTokens == 1 || CapacityInTokens == 0) &amp;&amp; X_netFromDCR_AddOrder_In &gt;= 1 &amp;&amp; X_netFromDCR_AddOrder_Ex &lt; 1 &amp;&amp; X_netFromDCR_MakePayment_In &lt; 1 &amp;&amp; Active + 1 &lt;= Max</label>
+<label kind="synchronisation">netFromDCR_AddOrder_7_test!</label>
+<label kind="assignment">lock = true</label>
+</transition>
+<transition>
+<source ref="a42791" />
+<target ref="a42787" />
+<label kind="guard">count0==1 &amp;&amp; count1==1 &amp;&amp; count2&lt;1</label>
+<label kind="synchronisation">netFromDCR_AddOrder_7_fire!</label>
+<label kind="assignment">count0:=0, X_netFromDCR_AddOrder_In = X_netFromDCR_AddOrder_In - 1, X_netFromDCR_MakePayment_In = X_netFromDCR_MakePayment_In + 1, X_netFromDCR_AddOrder_Ex = X_netFromDCR_AddOrder_Ex + 1, count1:=0, count2:=0, lock = false , Active = Active + 1</label>
+</transition>
+<transition>
+<source ref="a42787" />
+<target ref="a42792" />
+<label kind="guard">(CapacityOutTokens == 1 || CapacityInTokens == 0) &amp;&amp; X_netFromDCR_MakePayment_In &lt; 1</label>
+<label kind="synchronisation">netFromDCR_EditPaymentInfo_0_test!</label>
+<label kind="assignment">lock = true</label>
+</transition>
+<transition>
+<source ref="a42792" />
+<target ref="a42787" />
+<label kind="guard">count0==1 &amp;&amp; count1&lt;1</label>
+<label kind="synchronisation">netFromDCR_EditPaymentInfo_0_fire!</label>
+<label kind="assignment">count0:=0, count1:=0, lock = false , Active = Active + 0</label>
+</transition>
+<transition>
+<source ref="a42787" />
+<target ref="a42793" />
+<label kind="guard">(CapacityOutTokens == 1 || CapacityInTokens == 0) &amp;&amp; X_netFromDCR_MakePayment_In &lt; 1</label>
+<label kind="synchronisation">netFromDCR_EditPaymentInfo_1_test!</label>
+<label kind="assignment">lock = true</label>
+</transition>
+<transition>
+<source ref="a42793" />
+<target ref="a42787" />
+<label kind="guard">count0==1 &amp;&amp; count1&lt;1</label>
+<label kind="synchronisation">netFromDCR_EditPaymentInfo_1_fire!</label>
+<label kind="assignment">count0:=0, count1:=0, lock = false , Active = Active + 0</label>
+</transition>
+</template>
+<system>system Control,Token;</system>
+</nta>

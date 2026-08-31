@@ -1,7 +1,7 @@
 <dcrgraph title="dcr-milestone-deadlock-fixed" dataTypesStatus="hide" filterLevel="-1" insightFilter="false" zoomLevel="1" formGroupStyle="Normal" formLayoutStyle="Horizontal" formShowPendingCount="true" graphBG="#f1f6fe" graphType="0" exercise="false" version="1.0">
     <meta>
-        <graph id="1826198" hash="52B95561D8F5A49D0CDDDD383D29EB9E" guid="E77C382C-656A-4C70-B848-8FE6BF9162A7" OwnerName="Vlad Paul Cosma" OwnerId="2275" categoryId="3862" categoryTitle="Default"/>
-        <revision id="4112719" type="minor" date="2024-09-21T11:15:07.017"/>
+        <graph id="1826198" hash="5B5CBD6404018C11BAD7B8EC93000B78" guid="E77C382C-656A-4C70-B848-8FE6BF9162A7" OwnerName="Vlad Paul Cosma" OwnerId="2275" categoryId="3862" categoryTitle="Default"/>
+        <revision id="4169185" type="minor" date="2024-10-11T15:25:35.887"/>
         <organization id="1" name="Community"/>
     </meta>
     <specification>
@@ -188,10 +188,11 @@
         </resources>
         <constraints>
             <conditions>
-                <condition sourceId="Activity0" targetId="Activity1" filterLevel="1" description="" time="5" groups=""/>
+                <condition sourceId="Activity0" targetId="Activity1" filterLevel="1" description="" time="3" groups=""/>
+                <condition sourceId="Activity2" targetId="Activity0" filterLevel="1" description="" time="" groups=""/>
             </conditions>
             <responses>
-                <response sourceId="Activity2" targetId="Activity1" filterLevel="1" description="" time="10" groups=""/>
+                <response sourceId="Activity2" targetId="Activity1" filterLevel="1" description="" time="5" groups=""/>
             </responses>
             <coresponses>
                 <coresponse sourceId="Activity3" targetId="Activity1" filterLevel="1" description="" time="" groups=""/>
@@ -226,7 +227,9 @@
                 <event id="Activity0"/>
                 <event id="Activity2"/>
             </included>
-            <pendingResponses/>
+            <pendingResponses>
+                <event id="Activity2" deadline="1"/>
+            </pendingResponses>
         </marking>
     </runtime>
 </dcrgraph>
